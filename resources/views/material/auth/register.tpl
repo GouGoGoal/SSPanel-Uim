@@ -35,7 +35,7 @@
                     <div class="rowtocol">
                         <div class="auth-row">
                             <div class="form-group-label auth-row">
-                                <label class="floating-label" for="passwd">密码</label>
+                                <label class="floating-label" for="passwd">密码(大于8位)</label>
                                 <input class="form-control maxwidth-auth" id="passwd" type="password">
                             </div>
                         </div>
@@ -48,34 +48,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="rowtocol">
-                        <div class="auth-row">
-                            <div class="form-group form-group-label dropdown">
-                                <label class="floating-label" for="imtype">选择您的联络方式</label>
-                                <button class="form-control maxwidth-auth" id="imtype" data-toggle="dropdown">
-
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="imtype">
-                                    <li><a href="#" class="dropdown-option" onclick="return false;" val="1"
-                                           data="imtype">微信</a></li>
-                                    <li><a href="#" class="dropdown-option" onclick="return false;" val="2"
-                                           data="imtype">QQ</a></li>
-                                    <li><a href="#" class="dropdown-option" onclick="return false;" val="3"
-                                           data="imtype">Facebook</a></li>
-                                    <li><a href="#" class="dropdown-option" onclick="return false;" val="4"
-                                           data="imtype">Telegram</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rowtocol">
-                        <div class="auth-row">
-                            <div class="form-group form-group-label">
-                                <label class="floating-label" for="wechat">在这输入联络方式账号</label>
-                                <input class="form-control maxwidth-auth" id="wechat" type="text">
-                            </div>
-                        </div>
-                    </div>
+                    
                     {if $config['register_mode'] == 'invite'}
                         <div class="rowtocol">
                             <div class="auth-row">
@@ -105,21 +78,6 @@
                                        data-target='#email_nrcy_modal'
                                        class="auth-help-reg">收不到验证码？</a>
                                 </div>
-                            </div>
-                        </div>
-                    {/if}
-
-                    {if $geetest_html != null}
-                        <div class="rowtocol">
-                            <div class="form-group form-group-label">
-                                <div id="embed-captcha"></div>
-                            </div>
-                        </div>
-                    {/if}
-                    {if $recaptcha_sitekey != null}
-                        <div class="form-group form-group-label">
-                            <div class="row">
-                                <div align="center" class="g-recaptcha" data-sitekey="{$recaptcha_sitekey}"></div>
                             </div>
                         </div>
                     {/if}
@@ -226,19 +184,9 @@
                         name: $$getValue('name'),
                         passwd: $$getValue('passwd'),
                         repasswd: $$getValue('repasswd'),
-                        wechat: $$getValue('wechat'),
 
-                        {if $recaptcha_sitekey != null}
-                        recaptcha: grecaptcha.getResponse(),
-                        {/if}
-
-                        imtype: $$getValue('imtype'),
                         code{if $enable_email_verify == 'true'},
-                        emailcode: $$getValue('email_code'){/if}{if $geetest_html != null},
-                        geetest_challenge: validate.geetest_challenge,
-                        geetest_validate: validate.geetest_validate,
-                        geetest_seccode: validate.geetest_seccode
-                        {/if}
+                        emailcode: $$getValue('email_code'){/if},
                     },
                     success: (data) => {
                         if (data.ret == 1) {
@@ -275,33 +223,12 @@
                     $("#tos_modal").modal();
                 }
             });
-
-            {if $geetest_html != null}
-            $('div.modal').on('shown.bs.modal', function () {
-                $("div.gt_slider_knob").hide();
-            });
-
-
-            $('div.modal').on('hidden.bs.modal', function () {
-                $("div.gt_slider_knob").show();
-            });
-
-
-            {/if}
-
+            
             $("#reg").click(function () {
                 register();
             });
 
             $("#tos").click(function () {
-                {if $geetest_html != null}
-                if (typeof validate === 'undefined' || !validate) {
-                    $("#result").modal();
-                    $$.getElementById('msg').innerHTML = '请滑动验证码来完成验证'
-                    return;
-                }
-
-                {/if}
                 $("#tos_modal").modal();
             });
         })
@@ -316,7 +243,7 @@
             if (wait == 0) {
                 o.removeAttr("disabled");
                 o.text("获取验证码");
-                wait = 60;
+                wait = 30;
             } else {
                 o.attr("disabled", "disabled");
                 o.text("重新发送(" + wait + ")");
@@ -359,30 +286,6 @@
                 })
             })
         })
-    </script>
-{/if}
-
-{if $geetest_html != null}
-    <script>
-        var handlerEmbed = function (captchaObj) {
-            // 将验证码加到id为captcha的元素里
-
-            captchaObj.onSuccess(function () {
-                validate = captchaObj.getValidate();
-            });
-
-            captchaObj.appendTo("#embed-captcha");
-
-            captcha = captchaObj;
-            // 更多接口参考：http://www.geetest.com/install/sections/idx-client-sdk.html
-        };
-
-        initGeetest({
-            gt: "{$geetest_html->gt}",
-            challenge: "{$geetest_html->challenge}",
-            product: "embed", // 产品形式，包括：float，embed，popup。注意只对PC版验证码有效
-            offline: {if $geetest_html->success}0{else}1{/if} // 表示用户后台检测极验服务器是否宕机，与SDK配合，用户一般不需要关注
-        }, handlerEmbed);
     </script>
 {/if}
 
@@ -435,6 +338,3 @@
 
 
 </script>
-{if $recaptcha_sitekey != null}
-    <script src="https://recaptcha.net/recaptcha/api.js" async defer></script>
-{/if}

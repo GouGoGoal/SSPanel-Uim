@@ -239,6 +239,7 @@ class URL
         if (!$is_ss) {
             $return_url .= self::getUserTraffic($user, $is_mu) . PHP_EOL;
             $return_url .= self::getUserClassExpiration($user, $is_mu) . PHP_EOL;
+            $return_url .= self::getWebsite($user, $is_mu) . PHP_EOL;
         }
         if (strtotime($user->expire_in) < time()) {
             return $return_url;
@@ -519,7 +520,17 @@ class URL
                     ->orWhere('user_id', '=', 0);
             }
         )->orderBy('priority', 'DESC')->orderBy('id')->first();
+       /***节点描述后加#偏移值***********/
         $node_name = $node->name;
+        $temp = explode("#", $node->info);
+        if ($temp[0]!=null){  //如果有#号，则往下执行
+            if (is_numeric($temp[1])) {
+                $offset = $temp[1];
+                if ($temp[2]!=null){
+                     $obfs=$temp[2];	
+                     }
+        } 
+        /*******************************/
         if ($relay_rule != null) {
             $node_name .= ' - ' . $relay_rule->dist_node()->name;
         }
@@ -531,9 +542,6 @@ class URL
             $mu_user->obfs_param = $user->getMuMd5();
             $mu_user->protocol_param = $user->id . ':' . $user->passwd;
             $user = $mu_user;
-            if (Config::get('mergeSub') != 'true') {
-                $node_name .= ' - ' . $mu_port . ' 单端口';
-            }
         }
         if ($is_ss) {
             if (!self::SSCanConnect($user)) {
@@ -572,7 +580,20 @@ class URL
         $return_array['remark'] = $node_name;
         $return_array['group'] = Config::get('appName');
         if ($mu_port != 0 && Config::get('mergeSub') != 'true') {
-            $return_array['group'] .= ' - 单端口';
+        /********端口偏移**********/
+      	if($offset){
+        $return_array['port'] = $offset;
+        }else{
+          $return_array['port'] = $user->port;
+        }
+        if($obfs){
+        $return_array['obfs'] = $obfs;
+        }else{
+          $return_array['obfs'] = $user->obfs;
+        }
+        }
+        /**************************/
+        
         }
         return $return_array;
     }
@@ -585,33 +606,28 @@ class URL
     public static function getUserTraffic($user, $is_mu = 0)
     {
         $group_name = Config::get('appName');
-        if ($is_mu == 1 && Config::get('mergeSub') != 'true') {
-            $group_name .= ' - 单端口';
-        }
-        if (strtotime($user->expire_in) > time()) {
-            if ($user->transfer_enable == 0) {
-                $percent = '0.00%';
-            } else {
-                $percent = number_format(($user->transfer_enable - $user->u - $user->d) / $user->transfer_enable * 100, 2) . '%';
-            }
-            $ssurl = 'www.google.com:1:auth_chain_a:chacha20:tls1.2_ticket_auth:YnJlYWt3YWxs/?obfsparam=&protoparam=&remarks=' . Tools::base64_url_encode('剩余流量：' . $percent . ' ' . $user->unusedTraffic()) . '&group=' . Tools::base64_url_encode($group_name);
-        } else {
-            $ssurl = 'www.google.com:1:auth_chain_a:chacha20:tls1.2_ticket_auth:YnJlYWt3YWxs/?obfsparam=&protoparam=&remarks=' . Tools::base64_url_encode('账户已过期，请续费后使用') . '&group=' . Tools::base64_url_encode($group_name);
-        }
+     	if($user->unusedTraffic()>0){
+			$ssurl = "www.google.com:1:auth_chain_a:chacha20:tls1.2_ticket_auth:YnJlYWt3YWxs/?obfsparam=&protoparam=&remarks=".Tools::base64_url_encode('剩餘流量：'.$user->unusedTraffic())."&group=".Tools::base64_url_encode($group_name);
+		}else{
+			$ssurl = "www.google.com:1:auth_chain_a:chacha20:tls1.2_ticket_auth:YnJlYWt3YWxs/?obfsparam=&protoparam=&remarks=".Tools::base64_url_encode("流量已用盡，請重新購買")."&group=".Tools::base64_url_encode($group_name);
+		}
         return 'ssr://' . Tools::base64_url_encode($ssurl);
     }
 
     public static function getUserClassExpiration($user, $is_mu = 0)
     {
         $group_name = Config::get('appName');
-        if ($is_mu == 1 && Config::get('mergeSub') != 'true') {
-            $group_name .= ' - 单端口';
-        }
-        if (strtotime($user->expire_in) > time()) {
-            $ssurl = 'www.google.com:2:auth_chain_a:chacha20:tls1.2_ticket_auth:YnJlYWt3YWxs/?obfsparam=&protoparam=&remarks=' . Tools::base64_url_encode('过期时间：' . $user->class_expire) . '&group=' . Tools::base64_url_encode($group_name);
-        } else {
-            $ssurl = 'www.google.com:2:auth_chain_a:chacha20:tls1.2_ticket_auth:YnJlYWt3YWxs/?obfsparam=&protoparam=&remarks=' . Tools::base64_url_encode('账户已过期，请续费后使用') . '&group=' . Tools::base64_url_encode($group_name);
-        }
+    	if(strtotime($user->expire_in)>time()){
+			$ssurl = "www.google.com:2:auth_chain_a:chacha20:tls1.2_ticket_auth:YnJlYWt3YWxs/?obfsparam=&protoparam=&remarks=".Tools::base64_url_encode("過期時間：".$user->class_expire)."&group=".Tools::base64_url_encode($group_name);
+		}else{
+			$ssurl = "www.google.com:2:auth_chain_a:chacha20:tls1.2_ticket_auth:YnJlYWt3YWxs/?obfsparam=&protoparam=&remarks=".Tools::base64_url_encode("賬戶已過期，請重新購買")."&group=".Tools::base64_url_encode($group_name);
+		}
         return 'ssr://' . Tools::base64_url_encode($ssurl);
     }
+    public static function getWebsite($user, $is_mu = 0){
+                  $group_name = Config::get('appName');
+			$ssurl = "www.google.com:3:auth_chain_a:chacha20:tls1.2_ticket_auth:YnJlYWt3YWxs/?obfsparam=&protoparam=&remarks=".Tools::base64_url_encode("永久網址：soulout.club（被墻）聯繫郵箱：souloutclub@gmail.com")."&group=".Tools::base64_url_encode($group_name);
+
+	return "ssr://" . Tools::base64_url_encode($ssurl);
+  }
 }

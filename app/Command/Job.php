@@ -98,7 +98,7 @@ class Job
         system('rm /tmp/ssmodbackup.zip', $ret);
 
         if (Config::get('backup_notify') == 'true') {
-            Telegram::Send('备份完毕了喵~今天又是安全祥和的一天呢。');
+            //Telegram::Send('备份完毕了喵~今天又是安全祥和的一天呢。');
         }
     }
 
@@ -150,7 +150,7 @@ class Job
         Speedtest::where('datetime', '<', time() - 86400 * 3)->delete();
         EmailVerify::where('expire_in', '<', time() - 86400 * 3)->delete();
         system('rm ' . BASE_PATH . '/storage/*.png', $ret);
-        Telegram::Send('姐姐姐姐，数据库被清理了，感觉身体被掏空了呢~');
+        //Telegram::Send('姐姐姐姐，数据库被清理了，感觉身体被掏空了呢~');
 
         //auto reset
         $boughts = Bought::all();
@@ -543,7 +543,7 @@ class Job
                         }
                     }
 
-                    Telegram::Send($notice_text);
+                    //Telegram::Send($notice_text);
 
                     $myfile = fopen(
                         BASE_PATH . '/storage/' . $node->id . '.offline',
@@ -629,7 +629,7 @@ class Job
                         }
                     }
 
-                    Telegram::Send($notice_text);
+                    //Telegram::Send($notice_text);
 
                     unlink(BASE_PATH . '/storage/' . $node->id . '.offline');
                 }
@@ -983,7 +983,7 @@ class Job
                                 $notice_text = '喵喵喵~ ' . $node->name . ' 节点被墙了喵~';
                             }
                         }
-                        Telegram::Send($notice_text);
+                        //Telegram::Send($notice_text);
                         $file_node = fopen(BASE_PATH . '/storage/' . $node->id . '.gfw', 'wb+');
                         fclose($file_node);
                     } else {
@@ -1041,7 +1041,7 @@ class Job
                                 $notice_text = '喵喵喵~ ' . $node->name . ' 节点恢复了喵~';
                             }
                         }
-                        Telegram::Send($notice_text);
+                        #Telegram::Send($notice_text);
                         unlink(BASE_PATH . '/storage/' . $node->id . '.gfw');
                     }
                 }

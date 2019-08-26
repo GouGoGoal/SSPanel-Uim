@@ -59,7 +59,7 @@ class DetectController extends AdminController
             return $response->getBody()->write(json_encode($rs));
         }
 
-        Telegram::SendMarkdown('有新的审计规则：' . $rule->name);
+        #Telegram::SendMarkdown('有新的审计规则：' . $rule->name);
 
         $rs['ret'] = 1;
         $rs['msg'] = '添加成功';
@@ -89,7 +89,7 @@ class DetectController extends AdminController
             return $response->getBody()->write(json_encode($rs));
         }
 
-        Telegram::SendMarkdown('规则更新：' . PHP_EOL . $request->getParam('name'));
+        #Telegram::SendMarkdown('规则更新：' . PHP_EOL . $request->getParam('name'));
 
         $rs['ret'] = 1;
         $rs['msg'] = '修改成功';

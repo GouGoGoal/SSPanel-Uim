@@ -219,6 +219,9 @@ class TelegramProcess
             }
         } else {
             //群组
+              if ($message->getNewChatMember() != null && Config::get('enable_welcome_message') == 'true') {
+                        $bot->sendMessage($message->getChat()->getId(), "欢迎 ".$message->getNewChatMember()->getFirstName()." ".$message->getNewChatMember()->getLastName()."\n\n有问题找 @out_soul \n\n 私聊机器人 @soulout_bot  \n提供查询、签到和快捷登录功能", $parseMode = null, $disablePreview = false);
+                    }
             if (Config::get('telegram_group_quiet') == 'true') {
                 return;
             }
@@ -254,11 +257,6 @@ class TelegramProcess
                         } else {
                             $reply['message'] = '不约，叔叔我们不约';
                         }
-                    }
-                    if ($message->getNewChatMember() != null && Config::get('enable_welcome_message') == 'true') {
-                        $reply['message'] = '欢迎 ' . $message->getNewChatMember()->getFirstName() . ' ' . $message->getNewChatMember()->getLastName();
-                    } else {
-                        $reply['message'] = null;
                     }
             }
         }

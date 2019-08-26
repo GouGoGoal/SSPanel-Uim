@@ -62,13 +62,12 @@ abstract class AbstractPayment
             $Payback->save();
         }
 
-        if (Config::get('enable_donate') == 'true') {
-            if ($user->is_hide == 1) {
-                Telegram::Send('一位不愿透露姓名的大老爷给我们捐了 ' . $codeq->number . ' 元!');
-            } else {
-                Telegram::Send($user->user_name . ' 大老爷给我们捐了 ' . $codeq->number . ' 元！');
-            }
-        }
+           if ($codeq->number>=100) 
+                Telegram::Send("一个富可敌国的兄弟赞助了 ".$codeq->number." 元！");
+            else if ($codeq->number>=10) 
+                Telegram::Send("一个财大气粗的兄弟赞助了 ".$codeq->number." 元！");
+            else
+                Telegram::Send("一个扣扣索索的兄弟赞助了 ".$codeq->number." 元！");
         return 0;
     }
 

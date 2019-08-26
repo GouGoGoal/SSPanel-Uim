@@ -29,17 +29,6 @@ class AuthController extends BaseController
     {
         $GtSdk = null;
         $recaptcha_sitekey = null;
-        if (Config::get('enable_login_captcha') === 'true') {
-            switch (Config::get('captcha_provider')) {
-                case 'recaptcha':
-                    $recaptcha_sitekey = Config::get('recaptcha_sitekey');
-                    break;
-                case 'geetest':
-                    $uid = time() . random_int(1, 10000);
-                    $GtSdk = Geetest::get($uid);
-                    break;
-            }
-        }
 
         if (Config::get('enable_telegram') === 'true') {
             $login_text = TelegramSessionManager::add_login_session();
@@ -61,28 +50,6 @@ class AuthController extends BaseController
             ->display('auth/login.tpl');
     }
 
-    public function getCaptcha($request, $response, $args)
-    {
-        $GtSdk = null;
-        $recaptcha_sitekey = null;
-        if (Config::get('captcha_provider') != '') {
-            switch (Config::get('captcha_provider')) {
-                case 'recaptcha':
-                    $recaptcha_sitekey = Config::get('recaptcha_sitekey');
-                    $res['recaptchaKey'] = $recaptcha_sitekey;
-                    break;
-                case 'geetest':
-                    $uid = time() . random_int(1, 10000);
-                    $GtSdk = Geetest::get($uid);
-                    $res['GtSdk'] = $GtSdk;
-                    break;
-            }
-        }
-
-        $res['respon'] = 1;
-        return $response->getBody()->write(json_encode($res));
-    }
-
     public function loginHandle($request, $response, $args)
     {
         // $data = $request->post('sdf');
@@ -92,28 +59,6 @@ class AuthController extends BaseController
         $passwd = $request->getParam('passwd');
         $code = $request->getParam('code');
         $rememberMe = $request->getParam('remember_me');
-
-        if (Config::get('enable_login_captcha') === 'true') {
-            switch (Config::get('captcha_provider')) {
-                case 'recaptcha':
-                    $recaptcha = $request->getParam('recaptcha');
-                    if ($recaptcha == '') {
-                        $ret = false;
-                    } else {
-                        $json = file_get_contents('https://recaptcha.net/recaptcha/api/siteverify?secret=' . Config::get('recaptcha_secret') . '&response=' . $recaptcha);
-                        $ret = json_decode($json)->success;
-                    }
-                    break;
-                case 'geetest':
-                    $ret = Geetest::verify($request->getParam('geetest_challenge'), $request->getParam('geetest_validate'), $request->getParam('geetest_seccode'));
-                    break;
-            }
-            if (!$ret) {
-                $res['ret'] = 0;
-                $res['msg'] = '系统无法接受您的验证结果，请刷新页面后重试。';
-                return $response->getBody()->write(json_encode($res));
-            }
-        }
 
         // Handle Login
         $user = User::where('email', '=', $email)->first();
@@ -142,17 +87,6 @@ class AuthController extends BaseController
         $time = 3600 * 24;
         if ($rememberMe) {
             $time = 3600 * 24 * (Config::get('rememberMeDuration') ?: 7);
-        }
-
-        if ($user->ga_enable == 1) {
-            $ga = new GA();
-            $rcode = $ga->verifyCode($user->ga_token, $code);
-
-            if (!$rcode) {
-                $res['ret'] = 0;
-                $res['msg'] = '两步验证码错误，如果您是丢失了生成器或者错误地设置了这个选项，您可以尝试重置密码，即可取消这个选项。';
-                return $response->getBody()->write(json_encode($res));
-            }
         }
 
         Auth::login($user->id, $time);
@@ -394,6 +328,15 @@ class AuthController extends BaseController
             $res['msg'] = '邮箱无效';
             return $response->getBody()->write(json_encode($res));
         }
+        
+        
+          if (!preg_match('/qq.com$|gmail.com$|163.com$|icloud.com$|126.com$|sina|139.com$|outlook.com$|msn.com$|hotmail.com$|foxmail.com$|yeah.net$|aliyun.com$/',$email)){
+           
+             $res['ret'] = 0;
+             $res['msg'] = "请使用Gmail、iCloud等常见邮箱注册，QQ邮箱请将souloutclub@gmail.com加入白名单";
+             return $response->getBody()->write(json_encode($res));
+            }
+            
         // check email
         $user = User::where('email', $email)->first();
         if ($user != null) {
@@ -401,6 +344,7 @@ class AuthController extends BaseController
             $res['msg'] = '邮箱已经被注册了';
             return $response->getBody()->write(json_encode($res));
         }
+        
 
         if (Config::get('enable_email_verify') === 'true') {
             $mailcount = EmailVerify::where('email', '=', $email)->where('code', '=', $emailcode)->where('expire_in', '>', time())->first();
@@ -425,18 +369,6 @@ class AuthController extends BaseController
             return $response->getBody()->write(json_encode($res));
         }
 
-        if ($imtype == '' || $wechat == '') {
-            $res['ret'] = 0;
-            $res['msg'] = '请填上你的联络方式';
-            return $response->getBody()->write(json_encode($res));
-        }
-
-        $user = User::where('im_value', $wechat)->where('im_type', $imtype)->first();
-        if ($user != null) {
-            $res['ret'] = 0;
-            $res['msg'] = '此联络方式已注册';
-            return $response->getBody()->write(json_encode($res));
-        }
         if (Config::get('enable_email_verify') === 'true') {
             EmailVerify::where('email', '=', $email)->delete();
         }
@@ -461,8 +393,6 @@ class AuthController extends BaseController
         $user->obfs_param = Config::get('reg_obfs_param');
         $user->forbidden_ip = Config::get('reg_forbidden_ip');
         $user->forbidden_port = Config::get('reg_forbidden_port');
-        $user->im_type = $imtype;
-        $user->im_value = $antiXss->xss_clean($wechat);
         $user->transfer_enable = Tools::toGB(Config::get('defaultTraffic'));
         $user->invite_num = Config::get('inviteNum');
         $user->auto_reset_day = Config::get('reg_auto_reset_day');

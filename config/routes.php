@@ -66,6 +66,9 @@ $app->post('/notify', App\Controllers\HomeController::class . ':notify');
 $app->get('/tos', App\Controllers\HomeController::class . ':tos');
 $app->get('/staff', App\Controllers\HomeController::class . ':staff');
 $app->post('/telegram_callback', App\Controllers\HomeController::class . ':telegram');
+//翔狐支付
+$app->post('/flyfoxpay_back/{type}', 'App\Services\Payment:notify');
+$app->get('/flyfoxpay_back/{type}', 'App\Services\Payment:notify');
 
 // User Center
 $app->group('/user', function () {
@@ -326,7 +329,6 @@ $app->group('/mod_mu', function () {
     $this->post('/nodes/{id}/info', App\Controllers\Mod_Mu\NodeController::class . ':info');
 
     $this->get('/nodes', App\Controllers\Mod_Mu\NodeController::class . ':get_all_info');
-    $this->post('/nodes/config', App\Controllers\Mod_Mu\NodeController::class . ':getConfig');
 
     $this->get('/func/detect_rules', App\Controllers\Mod_Mu\FuncController::class . ':get_detect_logs');
     $this->get('/func/relay_rules', App\Controllers\Mod_Mu\FuncController::class . ':get_relay_rules');

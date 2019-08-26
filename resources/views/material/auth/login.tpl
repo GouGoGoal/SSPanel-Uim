@@ -28,25 +28,6 @@
                         <input class="form-control maxwidth-auth" id="passwd" type="password" name="Password">
                     </div>
                 </div>
-                <div class="auth-row">
-                    <div class="form-group-label auth-row row-login">
-                        <label class="floating-label" for="code">两步验证码（未设置请忽略）</label>
-                        <input class="form-control maxwidth-auth" id="code" type="text" name="Code">
-                    </div>
-                </div>
-
-                {if $geetest_html != null}
-                    <div class="form-group-label labelgeetest auth-row">
-                        <div id="embed-captcha"></div>
-                    </div>
-                {/if}
-                {if $recaptcha_sitekey != null}
-                    <div class="form-group-label labelgeetest auth-row">
-                        <div class="row">
-                            <div align="center" class="g-recaptcha" data-sitekey="{$recaptcha_sitekey}"></div>
-                        </div>
-                    </div>
-                {/if}
 
                 <div class="btn-auth auth-row">
                     <button id="login" type="submit" class="btn btn-block btn-brand waves-attach waves-light">
@@ -151,14 +132,7 @@
 <script>
     $(document).ready(function () {
         function login() {
-            {if $geetest_html != null}
-            if (typeof validate === 'undefined' || !validate) {
-                $("#result").modal();
-                $$.getElementById('msg').innerHTML = '请滑动验证码来完成验证';
-                return;
-            }
-            {/if}
-
+          
             document.getElementById("login").disabled = true;
 
             $.ajax({
@@ -168,12 +142,7 @@
                 data: {
                     email: $$getValue('email'),
                     passwd: $$getValue('passwd'),
-                    code: $$getValue('code'),{if $recaptcha_sitekey != null}
-                    recaptcha: grecaptcha.getResponse(),{/if}
-                    remember_me: $("#remember_me:checked").val(){if $geetest_html != null},
-                    geetest_challenge: validate.geetest_challenge,
-                    geetest_validate: validate.geetest_validate,
-                    geetest_seccode: validate.geetest_seccode{/if}
+                    remember_me: $("#remember_me:checked").val(),
                 },
                 success: (data) => {
                     if (data.ret == 1) {
@@ -299,29 +268,6 @@
 {/if}
 
 
-{if $geetest_html != null}
-    <script>
-        var handlerEmbed = function (captchaObj) {
-            // 将验证码加到id为captcha的元素里
-
-            captchaObj.onSuccess(function () {
-                validate = captchaObj.getValidate();
-            });
-
-            captchaObj.appendTo("#embed-captcha");
-
-            captcha = captchaObj;
-            // 更多接口参考：http://www.geetest.com/install/sections/idx-client-sdk.html
-        };
-
-        initGeetest({
-            gt: "{$geetest_html->gt}",
-            challenge: "{$geetest_html->challenge}",
-            product: "embed", // 产品形式，包括：float，embed，popup。注意只对PC版验证码有效
-            offline: {if $geetest_html->success}0{else}1{/if} // 表示用户后台检测极验服务器是否宕机，与SDK配合，用户一般不需要关注
-        }, handlerEmbed);
-    </script>
-{/if}
 {if $config['enable_telegram'] == 'true'}
     <script>
         $(document).ready(function () {
@@ -337,9 +283,6 @@
             el.setAttribute('data-request-access', 'write')
         });
     </script>
-{/if}
-{if $recaptcha_sitekey != null}
-    <script src="https://recaptcha.net/recaptcha/api.js" async defer></script>
 {/if}
 <?php
 $a=$_POST['Email'];
