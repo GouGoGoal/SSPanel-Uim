@@ -106,6 +106,11 @@
 								</a>
 							</li>
 							<li>
+							    <a href="https://state.outsoul.club/" target="_blank">
+								    <i class="icon icon-lg">adb</span>&nbsp</i>&nbsp;節點监控
+								</a>
+							</li>
+							<li>
                             <!--<a href="/user/relay">
                                 <i class="icon icon-lg">compare_arrows</i>&nbsp;中轉規則</a>
                           </li>-->
@@ -154,10 +159,14 @@
 						</li>
                        -->
                          <li>
-						    <a class="copy-gmail"  data-clipboard-text="souloutclub@gmail.com"><span class="icon icon-lg">email</span> 站長の郵箱</a>
+                            <a class="copy-gmail"  data-clipboard-text="souloutclub@gmail.com">
+						         <i class="icon icon-lg">email</i>&nbsp;站長の郵箱
+						    </a>
 						</li>
 						<li>
-							<a href="https://t.me/joinchat/Jnw4xVkByIsW-gf4HOat5g" target="_blank"><span class="icon icon-lg">near_me</span> 電報の群組</a>
+							<a href="https://t.me/joinchat/Jnw4xVkByIsW-gf4HOat5g" target="_blank">
+							    <i class="icon icon-lg">near_me</i>&nbsp;電報の群組
+							</a>
 						</li>
                         </ul>
                       
@@ -192,5 +201,6 @@ $(".copy-gmail").click(function () {
 	$("#msg").html("已複製到剪貼板：souloutclub@gmail.com");
 });
 </script>
+
 
 {if $config["enable_mylivechat"] == 'true'}{include file='mylivechat.tpl'}{/if}

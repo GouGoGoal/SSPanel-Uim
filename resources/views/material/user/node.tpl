@@ -124,8 +124,6 @@
 												<div class="nodeload">
 													<div class="label label-brand-accent"> ↑点击节点查看配置信息</div>
 												<div>
-													<span class="node-icon"><i class="icon icon-lg">cloud</i></span>
-													<span class="node-load">负载：<code>{if $node['latest_load'] == -1}N/A{else}{$node['latest_load']}%{/if}</code></span>
 												</div>
 											</div>
 										</div>
@@ -188,7 +186,7 @@
 										{if $node['class']!=$class}
 											{$class=$node['class']}
 											
-											<p class="card-heading">{if $class == 0}普通{else}VIP {$node['class']} {/if}用户节点</p>	
+											<p class="card-heading">{if $class == 1}SSR{else}V2ray {/if}节点</p>	
 										{/if}
 
 										<div class="tile tile-collapse">

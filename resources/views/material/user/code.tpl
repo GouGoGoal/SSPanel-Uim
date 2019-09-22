@@ -60,7 +60,7 @@
                     </div>
                 {/if}
 
-             <!--   {if $bitpay!=''}
+                {if $bitpay!='' && $payment_system!='bitpayx'}
                     <div class="col-lg-12 col-md-12">
                         <div class="card margin-bottom-no">
                             <div class="card-main">
@@ -70,7 +70,7 @@
                             </div>
                         </div>
                     </div>
-                {/if}-->
+                {/if}
 
                 <div class="col-lg-12 col-md-12">
                     <div class="card margin-bottom-no">

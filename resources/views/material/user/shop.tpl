@@ -48,40 +48,14 @@
                                 <div class="shop-name">{$shop->name}</div>
                                 <div class="shop-price">{$shop->price}</div>
                                 <div class="shop-tat">
-                                    <span>{$shop->bandwidth()}</span> / <span>{$shop->class_expire()}</span>
+                                    {if {$shop->reset()} == '0' }
+                                    <span>{$shop->bandwidth()}</span> / <span>{$shop->class_expire()}</span><span>
+                                    {else}
+                                    <span>{$shop->bandwidth()}</span> / <span>{$shop->reset()}</span> · <span> {$shop->class_expire()}</span>
+                                    {/if}
+                                    
                                 </div>
-                                <div class="shop-cube">
-                                    <div>
-                                        <div class="cube-detail">
-                                            <span>Lv.</span>{$shop->user_class()}
-                                        </div>
-                                        <div class="cube-title">
-                                            VIP
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="cube-detail">
-                                            {if {$shop->connector()} == '0' }无限制{else}{$shop->connector()}
-                                                <span> 个</span>
-                                            {/if}
-                                        </div>
-                                        <div class="cube-title">
-                                            客户端数量
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="cube-detail">
-                                            {if {$shop->speedlimit()} == '0' }无限制{else}{$shop->speedlimit()}
-                                                <span> Mbps</span>
-                                            {/if}
-                                        </div>
-                                        <div class="cube-title">
-                                            端口速率
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="shop-content">
+                                <!--<div class="shop-content">
                                     <div class="shop-content-left">账号有效期:</div>
                                     <div class="shop-content-right">{$shop->expire()}<span>天</span></div>
                                     <div class="shop-content-left">重置周期:</div>
@@ -94,7 +68,7 @@
                                             / {$shop->reset()}
                                             <span>天</span>
                                         {/if}</div>
-                                </div>
+                                </div>-->
                                 <div class="shop-content-extra">
                                     {foreach $shop->content_extra() as $service}
                                         <div><span class="icon">{$service[0]}</span> {$service[1]}</div>
@@ -129,7 +103,7 @@
                             <a class="btn btn-brand-accent shop-btn" href="javascript:void(0);"
                                onClick="buy('{$shop->id}',{$shop->auto_renew})">购买</a>
 
-                            <div class="shop-drop dropdown-area">
+                            <!--<div class="shop-drop dropdown-area">
                                 <div class="card-tag tag-black">账号有效期</div>
                                 <div class="card-tag tag-blue">{$shop->expire()} 天</div>
                                 {if {$shop->reset()} == '0' }
@@ -155,7 +129,7 @@
                                     <div class="card-tag tag-black">客户端限制</div>
                                     <div class="card-tag tag-blue">{$shop->connector()} 个</div>
                                 {/if}
-                            </div>
+                            </div>-->
                         </div>
                     {/foreach}
 
@@ -168,12 +142,13 @@
                         <div class="modal-content">
                             <div class="modal-heading">
                                 <a class="modal-close" data-dismiss="modal">×</a>
-                                <h2 class="modal-title">您有优惠码吗？</h2>
+                                <h2 class="modal-title">请注意！</h2>
                             </div>
                             <div class="modal-inner">
                                 <div class="form-group form-group-label">
-                                    <label class="floating-label" for="coupon">有的话，请在这里输入。没有的话，直接确定吧</label>
-                                    <input class="form-control maxwidth-edit" id="coupon" type="text">
+                                    <div>流量与时长不叠加，请临近过期或流量用尽后再购买</div>
+                                     <div>购买前请前往购买记录里取消自动续费</div><br>
+                                     <div>是否确定购买？</div>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -197,7 +172,6 @@
                             </div>
                             <div class="modal-inner">
                                 <p id="name">商品名称：</p>
-                                <p id="credit">优惠额度：</p>
                                 <p id="total">总金额：</p>
 
                                 <div class="checkbox switch">
@@ -209,7 +183,7 @@
                                 <br/>
                                 <div class="checkbox switch" id="autor">
                                     <label for="autorenew">
-                                        <input checked class="access-hide" id="autorenew" type="checkbox">
+                                        <input  class="access-hide" id="autorenew" type="checkbox" >
                                         <span class="switch-toggle"></span>到期时自动续费
                                     </label>
                                 </div>
@@ -284,16 +258,12 @@
             url: "coupon_check",
             dataType: "json",
             data: {
-                coupon: $$getValue('coupon'),
                 shop
             },
             success: (data) => {
                 if (data.ret) {
                     $$.getElementById('name').innerHTML = `商品名称：${
                             data.name
-                            }`;
-                    $$.getElementById('credit').innerHTML = `优惠额度：${
-                            data.credit
                             }`;
                     $$.getElementById('total').innerHTML = `总金额：${
                             data.total
@@ -332,7 +302,6 @@
             url: "buy",
             dataType: "json",
             data: {
-                coupon: $$getValue('coupon'),
                 shop,
                 autorenew,
                 disableothers

@@ -1,7 +1,7 @@
 <div class="row">
 
     <div class="col-lg-6 col-md-6">
-        <p class="card-heading">数字货币充值</p>
+        <p class="card-heading">电脑微信支付</p>
         <div class="form-group form-group-label">
             <label class="floating-label" for="bitpayamount">金额</label>
             <input class="form-control" id="bitpayamount" type="text">

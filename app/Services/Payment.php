@@ -9,7 +9,7 @@
 namespace App\Services;
 
 use App\Services\Gateway\{
-    AopF2F, Codepay, DoiAMPay, PaymentWall, ChenPay, SPay, TrimePay,BitPayX
+    AopF2F, Codepay, DoiAMPay, PaymentWall, ChenPay, SPay, TrimePay,BitPayX,flyfoxpay
 };
 
 class Payment
@@ -36,6 +36,8 @@ class Payment
                 return new PAYJS(Config::get('payjs_key'));
             case ('bitpayx'):
                 return new BitPayX(Config::get('bitpay_secret'));
+            case("flyfoxpay"):
+                return new flyfoxpay();
             default:
                 return null;
         }
