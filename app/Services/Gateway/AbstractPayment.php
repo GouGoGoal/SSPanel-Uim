@@ -38,7 +38,8 @@ abstract class AbstractPayment
         $p->status = 1;
         $p->save();
         $user = User::find($p->userid);
-        $user->money += $p->total;
+        //$user->money += $p->total;
+        $user->money = $user->money+$p->total;
         $user->save();
         $codeq = new Code();
         $codeq->code = $method;

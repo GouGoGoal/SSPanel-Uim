@@ -51,8 +51,9 @@
                       </div>	
 					  	<nav>
 							<ul>
-                                <li><a href="#1">簡介</a></li>
+                                <!--<li><a href="#1">簡介</a></li>-->
 					            <li><a href="/user">用戶中心</a></li>
+					            <li><a href="https://state.outsoul.club" target="_blank">節點監控</a></li>
 								<li><a href="/user/logout">退出登錄</a></li>
                         </ul>
 						</nav>
@@ -72,6 +73,7 @@
                                <li><a href="#1">簡介</a></li>
 								<li><a href="/auth/login">登錄</a></li>
 								<li><a href="/auth/register">註冊</a></li>
+								<li><a href="https://state.outsoul.club" target="_blank">監控</a></li>
                               
                            </ul>
 						</nav>

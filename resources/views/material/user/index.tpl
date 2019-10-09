@@ -6,7 +6,7 @@
 
 		<div class="content-header ui-content-header">
 			<div class="container">
-				<h1 class="content-heading">用戶中心</h1>
+				<h1 class="content-heading" ><font color="black">用戶中心</font></h1>
 			</div>
 		</div>
 		<div class="container">
@@ -529,23 +529,14 @@ initGeetest({
 	product: "popup", // 产品形式，包括：float，embed，popup。注意只对PC版验证码有效
 	offline: {if $geetest_html->success}0{else}1{/if} // 表示用户后台检测极验服务器是否宕机，与SDK配合，用户一般不需要关注
 }, handlerPopup);
-
-
-
 {/if}
-
-
-
 </script>
 
-<script>
-$(function(){
-	new Clipboard('.copy-ip');
-});
 
-$(".copy-ip").click(function () {
+<!--<script>
+$(function () {
 	$("#result").modal();
-	$("#msg").html("IP"+"已複製");
+	$("#msg").html("国庆期间充值加赠20%，详情看公告");
 });
-</script>
+</script>-->
 {if $recaptcha_sitekey != null}<script src="https://recaptcha.net/recaptcha/api.js" async defer></script>{/if}

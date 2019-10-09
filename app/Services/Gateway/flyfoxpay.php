@@ -116,7 +116,7 @@ $notify_url = $return;
 $return_url = $return;
 
 //商品名称
-$name = 'SS商品-'.$_SERVER['HTTP_HOST'];
+$name = '灵魂出窍-'.$_SERVER['HTTP_HOST'];
 
 //支付金额（保留小数点后两位）
 $money = $price;
@@ -164,7 +164,7 @@ if ($pay->verify($data)) {
     {
         return '
                     <div class="card-inner">
-										<p class="card-heading">充值(手机微信支付以及支付宝)</p>
+										<p class="card-heading">充值</p>
 										<h5>支付方式:</h5>
 										<nav class="tab-nav margin-top-no">
 											<ul class="nav nav-list">

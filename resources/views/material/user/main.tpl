@@ -191,6 +191,7 @@
 			</div>
 		</div>
 	</nav>
+
   <script>
 $(function(){
 	new Clipboard('.copy-gmail');
