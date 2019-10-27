@@ -237,9 +237,7 @@ class URL
     {
         $return_url = '';
         if (!$is_ss) {
-            $return_url .= self::getUserTraffic($user, $is_mu) . PHP_EOL;
             $return_url .= self::getUserClassExpiration($user, $is_mu) . PHP_EOL;
-            $return_url .= self::getWebsite($user, $is_mu) . PHP_EOL;
         }
         if (strtotime($user->expire_in) < time()) {
             return $return_url;
@@ -602,32 +600,20 @@ class URL
     {
         return clone $user;
     }
-
-    public static function getUserTraffic($user, $is_mu = 0)
-    {
-        $group_name = Config::get('appName');
-     	if($user->unusedTraffic()>0){
-			$ssurl = "www.google.com:1:auth_chain_a:chacha20:tls1.2_ticket_auth:YnJlYWt3YWxs/?obfsparam=&protoparam=&remarks=".Tools::base64_url_encode('剩餘流量：'.$user->unusedTraffic())."&group=".Tools::base64_url_encode($group_name);
-		}else{
-			$ssurl = "www.google.com:1:auth_chain_a:chacha20:tls1.2_ticket_auth:YnJlYWt3YWxs/?obfsparam=&protoparam=&remarks=".Tools::base64_url_encode("流量已用盡，請重新購買")."&group=".Tools::base64_url_encode($group_name);
-		}
-        return 'ssr://' . Tools::base64_url_encode($ssurl);
-    }
+    
 
     public static function getUserClassExpiration($user, $is_mu = 0)
     {
         $group_name = Config::get('appName');
     	if(strtotime($user->expire_in)>time()){
-			$ssurl = "www.google.com:2:auth_chain_a:chacha20:tls1.2_ticket_auth:YnJlYWt3YWxs/?obfsparam=&protoparam=&remarks=".Tools::base64_url_encode("過期時間：".$user->class_expire)."&group=".Tools::base64_url_encode($group_name);
+    		$now_time    = strtotime(date('Y-m-d H:i:s'));
+    		$expire_time = strtotime($user->class_expire);
+    		$differ_time = $expire_time - $now_time;
+    		$useful_day  = ceil($differ_time/86400);
+			$ssurl       = "www.google.com:2:auth_chain_a:chacha20:tls1.2_ticket_auth:YnJlYWt3YWxs/?obfsparam=&protoparam=&remarks=".Tools::base64_url_encode($user->unusedTraffic().'-'.$useful_day.'天'.'(针对此次订阅计算，邮箱souloutclub@gmail.com)')."&group=".Tools::base64_url_encode($group_name);
 		}else{
-			$ssurl = "www.google.com:2:auth_chain_a:chacha20:tls1.2_ticket_auth:YnJlYWt3YWxs/?obfsparam=&protoparam=&remarks=".Tools::base64_url_encode("賬戶已過期，請重新購買")."&group=".Tools::base64_url_encode($group_name);
+			$ssurl = "www.google.com:2:auth_chain_a:chacha20:tls1.2_ticket_auth:YnJlYWt3YWxs/?obfsparam=&protoparam=&remarks=".Tools::base64_url_encode("流量用尽，请重新购买(针对此次订阅计算，邮箱souloutclub@gmail.com)")."&group=".Tools::base64_url_encode($group_name);
 		}
         return 'ssr://' . Tools::base64_url_encode($ssurl);
     }
-    public static function getWebsite($user, $is_mu = 0){
-                  $group_name = Config::get('appName');
-			$ssurl = "www.google.com:3:auth_chain_a:chacha20:tls1.2_ticket_auth:YnJlYWt3YWxs/?obfsparam=&protoparam=&remarks=".Tools::base64_url_encode("永久網址：soulout.club（被墻）聯繫郵箱：souloutclub@gmail.com")."&group=".Tools::base64_url_encode($group_name);
-
-	return "ssr://" . Tools::base64_url_encode($ssurl);
-  }
 }

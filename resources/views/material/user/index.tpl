@@ -18,8 +18,8 @@
 									<div class="user-info-main">
 										<div class="nodemain">
 											<div class="nodehead node-flex">
-												<div class="nodename">剩餘時長</div>
-                                              <a href="/user/shop" class="card-tag tag-green">購買</a>
+												<div class="nodename">剩余时长</div>
+                                              <a href="/user/shop" class="card-tag tag-green">购买</a>
 											</div>
 											<div class="nodemiddle node-flex">
 												<div class="nodetype">
@@ -62,7 +62,7 @@
 									</div>
 									<div class="user-info-bottom">
 										<div class="nodeinfo node-flex">
-											<span href="/user/shop"><i class="icon icon-md">attach_money</i>賬戶可用餘額</span>
+											<span href="/user/shop"><i class="icon icon-md">attach_money</i>不定期清理0余额过期账号</span>
 										</div>
 									</div>
 								</div>
@@ -72,7 +72,7 @@
 									<div class="user-info-main">
 										<div class="nodemain">
 											<div class="nodehead node-flex">
-												<div class="nodename">在綫設備數</div>
+												<div class="nodename">在线设备数</div>
 											</div>
 											<div class="nodemiddle node-flex">
 												<div class="nodetype">
@@ -92,7 +92,7 @@
 									</div>
 									<div class="user-info-bottom">
 										<div class="nodeinfo node-flex">
-											<span><i class="icon icon-md">donut_large</i> 在綫設備/設備限制數</span>
+											<span><i class="icon icon-md">donut_large</i> 在线设备数/设备限制数</span>
 										</div>
 									</div>
 								</div>
@@ -124,9 +124,9 @@
 									<div class="user-info-bottom">
 										<div class="nodeinfo node-flex">
 										{if $user->class!=0}
-											<span><i class="icon icon-md">tag_faces</i> 用錢創造快樂</span>
+											<span><i class="icon icon-md">tag_faces</i> 用钱创造快乐</span>
 										{else}
-										    <span><i class="icon icon-md">mood_bad</i>沒錢讓我很難辦啊 </span>
+										    <span><i class="icon icon-md">mood_bad</i>没钱让我很难办啊 </span>
 										{/if}
 										</div>
 									</div>
@@ -138,21 +138,9 @@
 							<div class="card">
 								<div class="card-main">
 									<div class="card-inner margin-bottom-no">
-                                    <p class="card-heading"> <i class="icon icon-md">notifications_active</i>公告欄</p>
+                                    <p class="card-heading"> <i class="icon icon-md">notifications_active</i>公告</p>
 										{if $ann != null}
 										<p>{$ann->content}</p>
-										{/if}
-										{if $config["enable_admin_contact"] == 'true'}
-										<p class="card-heading">管理员联系方式</p>
-										{if $config["admin_contact1"]!=null}
-										<p>{$config["admin_contact1"]}</p>
-										{/if}
-										{if $config["admin_contact2"]!=null}
-										<p>{$config["admin_contact2"]}</p>
-										{/if}
-										{if $config["admin_contact3"]!=null}
-										<p>{$config["admin_contact3"]}</p>
-										{/if}
 										{/if}
 									</div>
 								</div>
@@ -260,12 +248,8 @@
 											<div class="bar remain color" style="width:calc({($user->transfer_enable-($user->u+$user->d))/$user->transfer_enable*100}%);"><span></span></div>
 											<div class="label-flex">
 											   <div class="label la-top"><div class="bar ard color"><span></span></div><span class="traffic-info">剩餘流量</span><code class="card-tag tag-green" id="remain">{$user->unusedTraffic()}</code></div>
-                                   
-                                             
-
 											</div>
 									   </div>
-                                        <p>（過期七天的0餘額賬戶會被清理，屆時請重新註冊）</p>
 									</div>
 
 								</div>

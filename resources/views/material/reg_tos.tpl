@@ -1,9 +1,7 @@
-<ul>
-  	<li style="color:red">註冊後有2G的体验流量，体验良好後再付費使用</li>
+<ul style="color:red">
+  	<li>注册后有2G体验流量，体验良好后再付费</li>
     <br>
-	<li style="color:red">請不要临时郵箱註冊</li>
+	<li>请不要在墙外发布任何违法信息</li>
     <br>
-	<li style="color:red">請不要在墻外發布任何违法信息</li>
-    <br>
-	<li style="color:red">使用任何節點，需遵循中國法律。</li>
+	<li>使用任何节点，请遵守当地国家以及中国的法律</li>
 </ul>

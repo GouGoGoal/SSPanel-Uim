@@ -17,14 +17,14 @@ $System_Config['version']='1';	//仅当涉及【需要修改config以外的文�
 $System_Config['key'] = '1234354654756756';						//!!! 瞎 jb 修改此key为随机字符串确保网站安全 !!!
 $System_Config['debug'] =  'false';								//正式环境请确保为 false
 $System_Config['appName'] = '靈魂出竅';							//站点名称
-$System_Config['baseUrl'] = 'https://outsoul.club';					//站点地址
+$System_Config['baseUrl'] = 'https://soulout.club';					//站点地址
 $System_Config['subUrl'] = 'https://rss.outsoul.xyz'.'/link/';	//订阅地址，如需和站点名称相同，请不要修改
-$System_Config['muKey'] = 'gouzekun';								//用于校验魔改后端请求，可以随意修改，但请保持前后端一致，否则节点不能工作！
+$System_Config['muKey'] = 'souloutclub';								//用于校验魔改后端请求，可以随意修改，但请保持前后端一致，否则节点不能工作！
 $System_Config['db_driver'] = 'mysql';							//数据库程序
-$System_Config['db_host'] = 'localhost';						//数据库地址
+$System_Config['db_host'] = '3306.soulout.club';		//数据库地址
 $System_Config['db_database'] = 'panel';						//数据库名
-$System_Config['db_username'] = 'panel';							//数据库用户名
-$System_Config['db_password'] = 'hxeBapzGdh5mAnFX';						//用户名对应的密码
+$System_Config['db_username'] = 'GouGoGoal@souloutclub';							//数据库用户名
+$System_Config['db_password'] = 'Gouzekun123!';						//用户名对应的密码
 
 
 //邮件设置--------------------------------------------------------------------------------------------
@@ -35,6 +35,20 @@ $System_Config['sendPageLimit']= 50;	//发信分页 解决大站发公告超时�
 $System_Config['mailgun_key'] = '';
 $System_Config['mailgun_domain'] = '';
 $System_Config['mailgun_sender'] = '';
+
+
+
+
+//域名邮箱
+/*
+$System_Config['smtp_host'] = 'smtp.qiye.163.com';
+$System_Config['smtp_username'] = 'admin@soulout.club';
+$System_Config['smtp_port'] = '994';
+$System_Config['smtp_name'] = '靈魂出竅';
+$System_Config['smtp_sender'] = 'admin@soulout.club';
+$System_Config['smtp_passsword'] = 'gouzekun123';
+$System_Config['smtp_ssl'] = 'true';
+*/
 
 //谷歌邮箱
 $System_Config['smtp_host'] = 'smtp.gmail.com';
@@ -176,7 +190,7 @@ $System_Config['enable_checkin_captcha'] = 'false';	//启用签到验证码
 
 
 //支付系统设置----------------------------------------------------------------------------------------
-#取值 none | codepay | trimepay | f2fpay | chenAlipay | paymentwall | spay |tomatopay | payjs | bitpayx | flyfoxpay
+#取值 none | codepay | trimepay | f2fpay | chenAlipay | paymentwall | spay |tomatopay | payjs
 $System_Config['payment_system']='flyfoxpay';
 
 #BitPay支付

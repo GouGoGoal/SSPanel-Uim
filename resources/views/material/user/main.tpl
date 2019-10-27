@@ -106,7 +106,9 @@
 								</a>
 							</li>
 							<li>
-							    <a href="https://state.outsoul.club/" target="_blank">
+							       <!-- <a href="https://state.outsoul.club/" target="_blank">-->
+							       <a href="http://58.218.209.233:61577" target="_blank">
+							    	
 								    <i class="icon icon-lg">adb</span>&nbsp</i>&nbsp;節點监控
 								</a>
 							</li>

@@ -4,7 +4,7 @@
 <main class="content">
     <div class="content-header ui-content-header">
         <div class="container">
-            <h1 class="content-heading">商品列表</h1>
+            <h1 class="content-heading">套餐列表</h1>
         </div>
     </div>
     <div class="container">
@@ -15,7 +15,7 @@
                     <div class="card-main">
                         <div class="card-inner">
                             <p>商品不可叠加，新购商品会覆盖旧商品的效果</p>
-                            <p>在线设备以IP为单位，如果你的设备处在同一个局域网内，属于一个设备</p>
+                            <p>在线设备以IP为单位，若你的多个设备使用同一个WiFi，则记为1个设备（部分节点此规则失效）</p>
                             <p><i class="icon icon-lg">attach_money</i>当前余额：<font color="#399AF2" size="5">{$user->money}</font> 元</p>
                         </div>
                     </div>

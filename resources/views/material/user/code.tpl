@@ -21,26 +21,7 @@
                         <div class="card-main">
                             <div class="card-inner">
                                  <div class="card-inner">
-                                    <p class="card-heading">當前餘額：<font color="#399AF2" size="5">{$user->money}</font> 元</p>
-                                  <ul>
-                                    <li>請不要關閉二維碼支付界面！！！否則會造成延迟到账</li>
-                                      <br>
-                                     <li>若充值未到賬請联系站長</li>
-                                      <br>
-                                  </ul>
-                                    {if $config["enable_admin_contact"] == 'true'}
-                                        <p class="card-heading">如果没有到账请立刻联系管理员：</p>
-                                        {if $config["admin_contact1"]!=null}
-                                            <li>{$config["admin_contact1"]}</li>
-                                        {/if}
-                                        {if $config["admin_contact2"]!=null}
-                                            <li>{$config["admin_contact2"]}</li>
-                                        {/if}
-                                        {if $config["admin_contact3"]!=null}
-                                            <li>{$config["admin_contact3"]}</li>
-                                        {/if}
-                                    {/if}
-                                    <br/>
+                                    <p class="card-heading">当前余额：<font color="#399AF2" size="5">{$user->money}</font> 元，若充值长时间未到账请联系站长</p>
                                 </div>
                             </div>
                         </div>
