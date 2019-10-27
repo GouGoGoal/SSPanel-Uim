@@ -1,0 +1,11 @@
+GRANT SELECT ON panel.unblockip to souloutclub@'%'  with grant option;
+GRANT SELECT,INSERT ON panel.blockip to souloutclub@'%'  with grant option;
+GRANT INSERT ON panel.ss_node_online_log to souloutclub@'%'  with grant option;
+GRANT INSERT ON panel.ss_node_info to souloutclub@'%'  with grant option;
+GRANT INSERT ON panel.alive_ip to souloutclub@'%'  with grant option;
+GRANT INSERT ON panel.detect_log to souloutclub@'%'  with grant option;
+GRANT INSERT ON panel.user_traffic_log to souloutclub@'%'  with grant option;
+GRANT SELECT ON panel.detect_list to souloutclub@'%'  with grant option;
+GRANT SELECT ON panel.relay to souloutclub@'%'  with grant option;
+GRANT UPDATE(`node_heartbeat`,`node_bandwidth`),SELECT(`id`,`node_ip`,`node_group`,`node_class`,`node_speedlimit`,`node_bandwidth`,`node_bandwidth_limit`,`traffic_rate`,`mu_only`,`sort`) ON panel.ss_node to souloutclub@'%' with grant option;
+GRANT  UPDATE(`u`,`d`,`t`),SELECT(`id`,`port`,`u`,`d`,`class`,`is_admin`,`expire_in`,`transfer_enable`,`passwd`,`enable`,`method`,`obfs`,`obfs_param`,`protocol`,`protocol_param`,`id`,`node_speedlimit`,`forbidden_ip`,`forbidden_port`,`disconnect_ip`,`is_multi_user`,`node_group`) ON panel.user to souloutclub@'%'  with grant option;
