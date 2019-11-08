@@ -100,7 +100,8 @@ class flyfoxpay extends AbstractPayment
         $pl->total = $price;
         $pl->tradeno = self::generateGuid();
         $pl->save();
-		$return='https://'.$_SERVER['HTTP_HOST'].'/flyfoxpay_back/'.$type;
+		//$return='https://'.$_SERVER['HTTP_HOST'].'/flyfoxpay_back/'.$type;
+		$return='https://'.'api.soulout.club'.'/flyfoxpay_back/'.$type;
 		$pay = new Pays($settings['hid'], $settings['key']);
 
 //支付方式
@@ -113,10 +114,10 @@ $out_trade_no = $pl->tradeno;
 $notify_url = $return;
 
 //回调通知地址
-$return_url = $return;
+$return_url = 'https://'.$_SERVER['HTTP_HOST'].'/flyfoxpay_back/'.$type;
 
 //商品名称
-$name = '灵魂出窍-'.$_SERVER['HTTP_HOST'];
+$name = '靈魂出竅 ￥'.$price;
 
 //支付金额（保留小数点后两位）
 $money = $price;

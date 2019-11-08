@@ -236,9 +236,7 @@ class URL
     public static function getAllUrl($user, $is_mu, $is_ss = 0)
     {
         $return_url = '';
-        if (!$is_ss) {
-            $return_url .= self::getUserClassExpiration($user, $is_mu) . PHP_EOL;
-        }
+        $return_url .= self::getUserClassExpiration($user, $is_mu) . PHP_EOL;
         if (strtotime($user->expire_in) < time()) {
             return $return_url;
         }
@@ -318,6 +316,7 @@ class URL
 
         if ($arrout == 0) {
             $result = '';
+            $result .= self::getUserClassExpiration_V2($user) . PHP_EOL;
             foreach ($nodes as $node) {
                 $result .= (self::getV2Url($user, $node, $arrout) . "\n");
             }
@@ -615,5 +614,22 @@ class URL
 			$ssurl = "www.google.com:2:auth_chain_a:chacha20:tls1.2_ticket_auth:YnJlYWt3YWxs/?obfsparam=&protoparam=&remarks=".Tools::base64_url_encode("流量用尽，请重新购买(针对此次订阅计算，邮箱souloutclub@gmail.com)")."&group=".Tools::base64_url_encode($group_name);
 		}
         return 'ssr://' . Tools::base64_url_encode($ssurl);
+    }
+
+    public static function getUserClassExpiration_V2($user)
+    {
+		    $now_time    = strtotime(date('Y-m-d H:i:s'));
+    		$expire_time = strtotime($user->class_expire);
+    		$differ_time = $expire_time - $now_time;
+    		$useful_day  = ceil($differ_time/86400);
+			$item = Tools::v2Array('outsoul.club');
+            $item['v'] = '2';
+            $item['id'] = '0';
+    	if(strtotime($user->expire_in)>time()){
+            $item['ps'] = $user->unusedTraffic().'-'.$useful_day.'天'.'(针对此次订阅计算，邮箱souloutclub@gmail.com)';
+		}else{
+			$item['ps'] = "流量用尽，请重新购买(针对此次订阅计算，邮箱souloutclub@gmail.com)";
+		}
+        return 'vmess://' . base64_encode(json_encode($item, JSON_UNESCAPED_UNICODE));
     }
 }

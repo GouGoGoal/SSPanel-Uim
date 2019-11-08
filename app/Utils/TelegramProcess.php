@@ -12,12 +12,10 @@ use TelegramBot\Api\Types\Inline\InlineKeyboardMarkup;
 class TelegramProcess
 {
     private static $all_rss = [
-        'clean_link' => '重置订阅',
+        'clean_link' => '重置订阅链接',
         '?mu=0' => 'SSR普通订阅',
-        '?mu=1' => 'SSR单端口订阅',
-        '?mu=3' => 'SS/SSD订阅',
-        '?mu=2' => 'V2ray订阅',
-        '?mu=4' => 'Clash订阅'];
+        '?mu=1' => 'SSR单端口订阅★',
+        '?mu=2' => 'V2ray订阅★',];
 
     private static function callback_bind_method($bot, $message, $command)
     {

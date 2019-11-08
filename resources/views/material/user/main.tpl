@@ -106,8 +106,8 @@
 								</a>
 							</li>
 							<li>
-							       <!-- <a href="https://state.outsoul.club/" target="_blank">-->
-							       <a href="http://58.218.209.233:61577" target="_blank">
+							       <a href="https://state.outsoul.club/" target="_blank">
+							      <!-- <a href="http://58.218.209.233:61577" target="_blank">-->
 							    	
 								    <i class="icon icon-lg">adb</span>&nbsp</i>&nbsp;節點监控
 								</a>
@@ -124,6 +124,11 @@
 							<li>
 								<a href="/user/tutorial">
 									<i class="icon icon-lg">start</i>&nbsp;使用教程
+								</a>
+							</li>
+							<li>
+								<a href="https://www.lanzous.com/b552076" target="_blank">
+									<i class="icon icon-lg">apps</i>&nbsp;应用网盘
 								</a>
 							</li>
                           
@@ -156,11 +161,13 @@
                           </ul>
                         <a class="waves-attach" data-toggle="collapse" href="#ui_menu_contact">聯繫方式</a>
                         <ul class="menu-collapse collapse in" id="ui_menu_contact">
-                       <!-- <li>
-							<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1939442111&site=qq&menu=yes"><span class="icon icon-lg">face</span> 站長のQQ</a>
+                       <li>
+							<a href="http://wpa.qq.com/msgrd?v=3&uin=1939442111&site=qq&menu=yes" target="_blank">
+							    <i class="icon icon-lg">face</i>&nbsp;站長の扣扣
+							</a>
 						</li>
-                       -->
-                         <li>
+                       
+                        <li>
                             <a class="copy-gmail"  data-clipboard-text="souloutclub@gmail.com">
 						         <i class="icon icon-lg">email</i>&nbsp;站長の郵箱
 						    </a>

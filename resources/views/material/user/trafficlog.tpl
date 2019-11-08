@@ -16,7 +16,7 @@
                             <div class="card-main">
                                 <div class="card-inner margin-bottom-no">
                                     <p>部分节点不支持流量记录.</p>
-                                    <p>此处只展示最近 72 小时的记录，粒度为分钟。</p>
+                                    <p>此处只展示最近 24 小时的记录，粒度为分钟。</p>
                                 </div>
 
                             </div>
@@ -37,7 +37,7 @@
                                                     {
                                                         zoomEnabled: true,
                                                         title: {
-                                                            text: "您的最近72小时流量消耗",
+                                                            text: "您的最近24小时流量消耗",
                                                             fontSize: 20
 
                                                         },

@@ -152,15 +152,15 @@
 									<div class="card-inner margin-bottom-no">
 									<div class="cardbtn-edit">
 											<div class="card-heading"><i class="icon icon-md">phonelink</i> 訂閲地址（<a href="/user/tutorial">使用教程</a>）</div>
-											<div class="reset-flex"><span>重置鏈接</span><a class="reset-link btn btn-brand-accent btn-flat" ><i class="icon">autorenew</i>&nbsp;</a></div>
+											<div class="reset-flex"><span>重置链接</span><a class="reset-link btn btn-brand-accent btn-flat" ><i class="icon">autorenew</i>&nbsp;</a></div>
 									</div> 
-                                                             <br />★SSR
-														<div class="float-clear"><input type="text" class="input form-control form-control-monospace cust-link col-xx-12 col-sm-8 col-lg-7" name="input1" readonly value="{$subUrl}{$ssr_sub_token}?mu=1" readonly="true"><button class="copy-text btn btn-subscription col-xx-12 col-sm-3 col-lg-2" type="button" data-clipboard-text="{$subUrl}{$ssr_sub_token}?mu=1">點擊複製</button><br></div>
+                                                             <br />SSR
+														<div class="float-clear"><input type="text" class="input form-control form-control-monospace cust-link col-xx-12 col-sm-8 col-lg-7" name="input1" readonly value="{$subUrl}{$ssr_sub_token}?mu=1" readonly="true"><button class="copy-text btn btn-subscription col-xx-12 col-sm-3 col-lg-2" type="button" data-clipboard-text="{$subUrl}{$ssr_sub_token}?mu=1">点击复制</button><br></div>
                                                             <br />
                                                            <br />V2ray
-														<div class="float-clear"><input type="text" class="input form-control form-control-monospace cust-link col-xx-12 col-sm-8 col-lg-7" name="input1" readonly value="{$subUrl}{$ssr_sub_token}?mu=2" readonly="true"><button class="copy-text btn btn-subscription col-xx-12 col-sm-3 col-lg-2" type="button" data-clipboard-text="{$subUrl}{$ssr_sub_token}?mu=2">點擊複製</button><br></div>
+														<div class="float-clear"><input type="text" class="input form-control form-control-monospace cust-link col-xx-12 col-sm-8 col-lg-7" name="input1" readonly value="{$subUrl}{$ssr_sub_token}?mu=2" readonly="true"><button class="copy-text btn btn-subscription col-xx-12 col-sm-3 col-lg-2" type="button" data-clipboard-text="{$subUrl}{$ssr_sub_token}?mu=2">点击复制</button><br></div>
                                                             <br />
-                                                           <div class="card-heading">若已泄漏請重置訂閲地址并<a href="/user/edit">修改節點連接密碼</a><div>
+                                                           <div class="card-heading">若泄漏地址请重置并<a href="/user/edit">修改节点连接密码</a><div>
                                               </div>
                                            </div>
                                       </div>

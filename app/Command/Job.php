@@ -143,14 +143,14 @@ class Job
             }
         }
 
-        NodeInfoLog::where('log_time', '<', time() - 86400 * 3)->delete();
-        NodeOnlineLog::where('log_time', '<', time() - 86400 * 3)->delete();
-        TrafficLog::where('log_time', '<', time() - 86400 * 3)->delete();
-        DetectLog::where('datetime', '<', time() - 86400 * 3)->delete();
-        Speedtest::where('datetime', '<', time() - 86400 * 3)->delete();
-        EmailVerify::where('expire_in', '<', time() - 86400 * 3)->delete();
+        NodeInfoLog::where('log_time', '<', time() - 86400 * 1)->delete();
+        NodeOnlineLog::where('log_time', '<', time() - 86400 * 1)->delete();
+        TrafficLog::where('log_time', '<', time() - 86400 * 1)->delete();
+        DetectLog::where('datetime', '<', time() - 86400 * 1)->delete();
+        Speedtest::where('datetime', '<', time() - 86400 * 1)->delete();
+        EmailVerify::where('expire_in', '<', time() - 86400 * 1)->delete();
         system('rm ' . BASE_PATH . '/storage/*.png', $ret);
-        //Telegram::Send('姐姐姐姐，数据库被清理了，感觉身体被掏空了呢~');
+        Telegram::Send('已清理数据库过期日志，感觉身体被掏空~');
 
         //auto reset
         $boughts = Bought::all();
@@ -211,7 +211,7 @@ class Job
                 $user->transfer_enable = $user->auto_reset_bandwidth * 1024 * 1024 * 1024;
                 $user->save();
 
-                $subject = Config::get('appName') . '-您的流量被重置了';
+               /* $subject = Config::get('appName') . '-您的流量被重置了';
                 $to = $user->email;
                 $text = '您好，根据管理员的设置，流量已经被重置为' . $user->auto_reset_bandwidth . 'GB';
                 try {
@@ -222,7 +222,7 @@ class Job
                     ]);
                 } catch (Exception $e) {
                     echo $e->getMessage();
-                }
+                }*/
             }
         }
 
@@ -543,7 +543,7 @@ class Job
                         }
                     }
 
-                    //Telegram::Send($notice_text);
+                    Telegram::Send($notice_text);
 
                     $myfile = fopen(
                         BASE_PATH . '/storage/' . $node->id . '.offline',
@@ -629,7 +629,7 @@ class Job
                         }
                     }
 
-                    //Telegram::Send($notice_text);
+                    Telegram::Send($notice_text);
 
                     unlink(BASE_PATH . '/storage/' . $node->id . '.offline');
                 }
@@ -820,7 +820,8 @@ class Job
 
             if (Config::get('auto_clean_unused_days') > 0 &&
                 max($user->t, strtotime($user->reg_date)) + (Config::get('auto_clean_unused_days') * 86400) < time() &&
-                $user->class == 0 &&
+                //$user->class == 0 &&
+                $user_traffic_left <=0 && //剩余流量小于等于0
                 $user->money <= Config::get('auto_clean_min_money')
             ) {
                 $subject = Config::get('appName') . '-您的用户账户已经被删除了';

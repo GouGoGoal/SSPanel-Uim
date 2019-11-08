@@ -22,6 +22,7 @@ class Config
             'appName' => self::get('appName'),
             'version' => VERSION,
             'baseUrl' => self::get('baseUrl'),
+            'directUrl' => self::get('directUrl'),
             'min_port' => self::get('min_port'),
             'max_port' => self::get('max_port'),
             'checkinMin' => self::get('checkinMin'),

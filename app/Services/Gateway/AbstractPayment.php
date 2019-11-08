@@ -40,6 +40,7 @@ abstract class AbstractPayment
         $user = User::find($p->userid);
         //$user->money += $p->total;
         $user->money = $user->money+$p->total;
+        //$user->money += $p->total*1.2;充值加赠20%
         $user->save();
         $codeq = new Code();
         $codeq->code = $method;

@@ -47,19 +47,9 @@
                                                 <input type="text"
                                                        class="input form-control form-control-monospace cust-link"
                                                        name="input1" readonly=""
-                                                       value="{$config["baseUrl"]}/auth/register?code={$code->code}">
+                                                       value="{$config["directUrl"]}/auth/register?code={$code->code}">
                                                 <button class="copy-text btn btn-subscription" type="button"
                                                         data-clipboard-text="{$config["baseUrl"]}/auth/register?code={$code->code}">
-                                                    点击复制
-                                                </button>
-                                            </div>
-                                            <div class="invite-link">
-                                                <input type="text"
-                                                       class="input form-control form-control-monospace cust-link"
-                                                       name="input2" readonly=""
-                                                       value="{$config["baseUrl"]}/#/auth/register?code={$code->code}">
-                                                <button class="copy-text btn btn-subscription" type="button"
-                                                        data-clipboard-text="{$config["baseUrl"]}/#/auth/register?code={$code->code}">
                                                     点击复制
                                                 </button>
                                             </div>

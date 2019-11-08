@@ -10,7 +10,7 @@ use Exception;
 
 class ExtMail
 {
-    public static function sendNoMail()
+    /*public static function sendNoMail()
     {
         $users = User::all();
         foreach ($users as $user) {
@@ -29,7 +29,7 @@ class ExtMail
                 }
             }
         }
-    }
+    }*/
 
     public static function sendOldMail()
     {
