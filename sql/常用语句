@@ -1,0 +1,13 @@
+
+##查看某个时间段，用户的购买情况
+select userid,price,email 
+from bought join user on bought.userid=user.id
+where datetime > 1573401600 and datetime < 1573488000
+
+
+##对某个时间段的购买反余额
+update user
+inner join bought
+on user.id = bought.userid
+set user.money=user.money+bought.price*0.5 
+where bought.datetime > 1573401600 and bought.datetime < 1573488000;
