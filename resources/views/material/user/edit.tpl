@@ -45,6 +45,7 @@
                                 <div class="card-heading">选择客户端</div>
                                 <p>SS/SSD/SSR 支持的加密方式和混淆方式有所不同，请根据实际情况来进行选择</p>
                                 <p>在这里选择你需要使用的客户端可以帮助你筛选加密方式和混淆方式</p>
+                                <p>此处设置只针对普通端口，请使用Telegram机器人获取普通端口订阅地址</p>
                                 <br>
                                 <button class="btn btn-subscription" type="button" id="filter-btn-ss">SS/SSD</button>
                                 <button class="btn btn-subscription" type="button" id="filter-btn-ssr">SSR</button>

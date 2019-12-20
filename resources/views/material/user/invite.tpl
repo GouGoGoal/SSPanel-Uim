@@ -43,6 +43,7 @@
                                             <p>剩余可邀请次数：{if $user->invite_num<0}无限{else}
                                                 <code>{$user->invite_num}</code>{/if}</p>
                                             <p>发送邀请链接给有需要的人，邀请他人注册时，请将以下链接发给被邀请者</p>
+                                            <p>请不要将此邀请链接发送到QQ空间、百度贴吧等国内公共网络区域</p>
                                             <div class="invite-link">
                                                 <input type="text"
                                                        class="input form-control form-control-monospace cust-link"

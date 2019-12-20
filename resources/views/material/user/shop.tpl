@@ -51,7 +51,7 @@
                                     {if {$shop->reset()} == '0' }
                                     <span>{$shop->bandwidth()}</span> / <span>{$shop->class_expire()}</span><span>
                                     {else}
-                                    <span>{$shop->bandwidth()}</span> / <span>{$shop->reset()}</span> · <span> {$shop->class_expire()}</span>
+                                    <span>{$shop->bandwidth()}</span> / <span>{$shop->reset()}</span> × <span> {$shop->class_expire()}</span>
                                     {/if}
                                     
                                 </div>

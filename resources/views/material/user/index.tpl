@@ -6,7 +6,7 @@
 
 		<div class="content-header ui-content-header">
 			<div class="container">
-				<h1 class="content-heading" ><font color="black">用戶中心</font></h1>
+				<h1 class="content-heading" >用戶中心</h1>
 			</div>
 		</div>
 		<div class="container">
@@ -520,7 +520,7 @@ initGeetest({
 <!--<script>
 $(function () {
 	$("#result").modal();
-	$("#msg").html("国庆期间充值加赠20%，详情看公告");
+	$("#msg").html("目前微信充值不会到账，请选择支付宝支付");
 });
 </script>-->
 {if $recaptcha_sitekey != null}<script src="https://recaptcha.net/recaptcha/api.js" async defer></script>{/if}

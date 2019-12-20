@@ -41,7 +41,9 @@ class Pays
         ];
         $string = http_build_query($data);
         $sign = $this->getsign($data);
-        return 'https://pay.ncepay.com/submit.php?' . $string . '&sign=' . $sign . '&sign_type=MD5';
+        //return 'https://pay.ncepay.com/submit.php?' . $string . '&sign=' . $sign . '&sign_type=MD5';
+        //return 'https://api.jxspay.cn/submit/?' . $string . '&sign=' . $sign . '&sign_type=MD5';
+        return 'https://9H3Hu.api.jumpsky.cn/submit/?' . $string . '&sign=' . $sign . '&sign_type=MD5';
     }
 
     /**
@@ -165,18 +167,9 @@ if ($pay->verify($data)) {
     {
         return '
                     <div class="card-inner">
-										<p class="card-heading">充值</p>
-										<h5>支付方式:</h5>
+										<p class="card-heading">主要充值渠道(支付宝、微信、QQ)</p>
 										<nav class="tab-nav margin-top-no">
-											<ul class="nav nav-list">
-											
-													<li>
-														<a class="waves-attach waves-effect type active" data-toggle="tab" data-pay="wxpay">聚合支付</a>
-													</li>
-											
-											
-				
-											</ul>
+
 											<div class="tab-nav-indicator"></div>
 										</nav>
 										<div class="form-group form-group-label">

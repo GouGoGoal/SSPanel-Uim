@@ -23,6 +23,7 @@ class Config
             'version' => VERSION,
             'baseUrl' => self::get('baseUrl'),
             'directUrl' => self::get('directUrl'),
+            'apiUrl' => self::get('apiUrl'),
             'min_port' => self::get('min_port'),
             'max_port' => self::get('max_port'),
             'checkinMin' => self::get('checkinMin'),

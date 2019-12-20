@@ -624,7 +624,7 @@ class URL
     		$useful_day  = ceil($differ_time/86400);
 			$item = Tools::v2Array('outsoul.club');
             $item['v'] = '2';
-            $item['id'] = '0';
+            $item['id'] = '00000000-0000-0000-0000-000000000000';
     	if(strtotime($user->expire_in)>time()){
             $item['ps'] = $user->unusedTraffic().'-'.$useful_day.'天'.'(针对此次订阅计算，邮箱souloutclub@gmail.com)';
 		}else{

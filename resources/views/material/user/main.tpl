@@ -106,9 +106,7 @@
 								</a>
 							</li>
 							<li>
-							       <a href="https://state.outsoul.club/" target="_blank">
-							      <!-- <a href="http://58.218.209.233:61577" target="_blank">-->
-							    	
+							       <a href="/state/" target="_blank">
 								    <i class="icon icon-lg">adb</span>&nbsp</i>&nbsp;節點监控
 								</a>
 							</li>
@@ -162,9 +160,9 @@
                         <a class="waves-attach" data-toggle="collapse" href="#ui_menu_contact">聯繫方式</a>
                         <ul class="menu-collapse collapse in" id="ui_menu_contact">
                        <li>
-							<a href="http://wpa.qq.com/msgrd?v=3&uin=1939442111&site=qq&menu=yes" target="_blank">
+							<!--<a href="http://wpa.qq.com/msgrd?v=3&uin=1939442111&site=qq&menu=yes" target="_blank">
 							    <i class="icon icon-lg">face</i>&nbsp;站長の扣扣
-							</a>
+							</a>-->
 						</li>
                        
                         <li>

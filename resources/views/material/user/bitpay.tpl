@@ -1,7 +1,7 @@
 <div class="row">
 
     <div class="col-lg-6 col-md-6">
-        <p class="card-heading">电脑微信支付</p>
+        <p class="card-heading">备用充值渠道(微信扫码)</p>
         <div class="form-group form-group-label">
             <label class="floating-label" for="bitpayamount">金额</label>
             <input class="form-control" id="bitpayamount" type="text">
@@ -11,9 +11,7 @@
 
 <div class="card-action">
     <div class="card-action-btn pull-left">
-        <button class="btn btn-flat waves-attach" id="bitpaySubmit" name="type" onclick="bitpay('Crypto')">
-            <img src="https://bitpay.dev/img/mpay-zh.png" height="50px"/>
-        </button>
+        <button class="btn btn-flat waves-attach" id="bitpaySubmit" name="type" onclick="bitpay('Crypto')" ><span class="icon">check</span>&nbsp;充值</button>
     </div>
 </div>
 
@@ -46,7 +44,8 @@
                     if (data.errcode === 0) {
                         $("#readytopay").modal('hide');
                         $$.getElementById('msg').innerHTML = '正在跳转到数字货币支付...'
-                        window.location.href = data.url;
+                        //window.location.href = data.url;
+                        window.open(data.url);
                     } else {
                         $("#result").modal();
                         $$.getElementById('msg').innerHTML = data.errmsg

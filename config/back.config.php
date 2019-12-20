@@ -19,6 +19,7 @@ $System_Config['debug'] =  'false';								//正式环境请确保为 false
 $System_Config['appName'] = '靈魂出竅';							//站点名称
 $System_Config['baseUrl'] = 'https://soulout.club';					//站点地址
 $System_Config['directUrl'] = 'https://outsoul.club';               //直连地址
+$System_Config['apiUrl'] = 'https://api.soulout.club';              //api地址
 $System_Config['subUrl'] = 'https://rss.outsoul.xyz'.'/link/';	//订阅地址，如需和站点名称相同，请不要修改
 $System_Config['muKey'] = 'souloutclub';								//用于校验魔改后端请求，可以随意修改，但请保持前后端一致，否则节点不能工作！
 $System_Config['db_driver'] = 'mysql';							//数据库程序

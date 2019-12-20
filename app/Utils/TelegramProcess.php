@@ -218,7 +218,8 @@ class TelegramProcess
         } else {
             //群组
               if ($message->getNewChatMember() != null && Config::get('enable_welcome_message') == 'true') {
-                        $bot->sendMessage($message->getChat()->getId(), "欢迎 ".$message->getNewChatMember()->getFirstName()." ".$message->getNewChatMember()->getLastName()."\n\n有问题找 @out_soul \n\n 私聊机器人 @soulout_bot  \n提供查询、签到和快捷登录功能", $parseMode = null, $disablePreview = false);
+                       $bot->sendMessage($message->getChat()->getId(), "欢迎 ".$message->getNewChatMember()->getFirstName()." ".$message->getNewChatMember()->getLastName()."\n有问题找  [帅帅的站长](https://t.me/out_soul)\n私聊  [群组机器人](https://t.me/soulout_bot)  可以查询、签到以及快捷登录\n看不懂英文?  [点击此处](https://t.me/setlanguage/classic-zh-cn)  切换中文", $parseMode = Markdown, $disablePreview = false);
+                         //$bot->sendMessage($message->getChat()->getId(), "欢迎 ".$message->getNewChatMember()->getFirstName()." ".$message->getNewChatMember()->getLastName()."\n有问题找 [帅帅的站长](https://t.me/out_soul)\n 私聊 [群组机器人](https://t.me/soulout_bot) 可以查询、签到以及快捷登录\n看不懂英文?[点击此处](https://t.me/setlanguage/classic-zh-cn)切换中文",'Markdown');
                     }
             if (Config::get('telegram_group_quiet') == 'true') {
                 return;

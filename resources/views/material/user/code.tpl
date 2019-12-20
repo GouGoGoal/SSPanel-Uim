@@ -22,6 +22,7 @@
                             <div class="card-inner">
                                  <div class="card-inner">
                                     <p class="card-heading">当前余额：<font color="#399AF2" size="5">{$user->money}</font> 元，若充值长时间未到账请联系站长</p>
+                                    <p class="card-heading">非RMB支付(PayPal、数字货币)请自己计算金额</p>
                                 </div>
                             </div>
                         </div>
@@ -41,7 +42,7 @@
                     </div>
                 {/if}
 
-                <!--{if $bitpay!='' && $payment_system!='bitpayx'}
+                {if $bitpay!='' && $payment_system!='bitpayx'}
                     <div class="col-lg-12 col-md-12">
                         <div class="card margin-bottom-no">
                             <div class="card-main">
@@ -51,7 +52,7 @@
                             </div>
                         </div>
                     </div>
-                {/if}-->
+                {/if}
 
                 <div class="col-lg-12 col-md-12">
                     <div class="card margin-bottom-no">
@@ -161,10 +162,13 @@
 		})
 })
 </script>
-
-
-
-
-
-
 {include file='user/footer.tpl'}
+
+
+<!--<script>
+$(function () {
+	$("#result").modal();
+	$("#msg").html("暂时请优先使用备用充值渠道，感谢配合");
+});
+</script>-->
+
