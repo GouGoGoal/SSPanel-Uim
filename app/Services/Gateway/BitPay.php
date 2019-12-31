@@ -105,7 +105,7 @@ class BitPay extends AbstractPayment
         $data['callback_url'] = Config::get('apiUrl') . '/payment/bitpay/notify';
         $data['success_url'] = 'https://'.$_SERVER['HTTP_HOST'].'/user/payment/bitpay/return?merchantTradeNo=';
         $data['success_url'] .= $pl->tradeno;
-        $data['cancel_url'] = $data['success_url'];
+        $data['cancel_url'] = 'https://'.$_SERVER['HTTP_HOST']. '/user/code';
         if ($type === 'Alipay') {
             $data['checkout'] = 'QBIT';
         }
