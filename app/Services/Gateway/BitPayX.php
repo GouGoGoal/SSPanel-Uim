@@ -111,11 +111,11 @@ class BitPayX extends AbstractPayment
         }
         $data['title'] = '支付单号：' . $pl->tradeno;
         $data['description'] = '充值：' . $price . ' 元';
-        $data['callback_url'] = Config::get('baseUrl') . '/payment/notify';
+        $data['callback_url'] = Config::get('apiUrl') . '/payment/notify';
 
-        $data['success_url'] = Config::get('baseUrl') . '/user/payment/return?merchantTradeNo=';
+        $data['success_url'] = 'https://'.$_SERVER['HTTP_HOST'] . '/user/payment/return?merchantTradeNo=';
         $data['success_url'] .= $pl->tradeno;
-        $data['cancel_url'] = Config::get('baseUrl') . '/user/code';
+        $data['cancel_url'] = 'https://'.$_SERVER['HTTP_HOST']. '/user/code';
 
         $str_to_sign = $this->prepareSignId($pl->tradeno);
         $data['token'] = $this->sign($str_to_sign);
