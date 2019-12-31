@@ -258,7 +258,7 @@ class XCat
     public function setTelegram()
     {
         $bot = new BotApi(Config::get('telegram_token'));
-        if ($bot->setWebhook(Config::get('baseUrl') . '/telegram_callback?token=' . Config::get('telegram_request_token')) == 1) {
+        if ($bot->setWebhook(Config::get('apiUrl') . '/telegram_callback?token=' . Config::get('telegram_request_token')) == 1) {
             echo('设置成功！' . PHP_EOL);
         }
     }
