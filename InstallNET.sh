@@ -10,7 +10,7 @@
 export tmpVER=''
 export tmpDIST=''
 export tmpURL=''
-export tmpWORD=''
+export tmpWORD='gouzekun123'
 export tmpMirror=''
 export tmpSSL=''
 export tmpINS=''
