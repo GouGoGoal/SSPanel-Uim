@@ -708,16 +708,17 @@ popularity-contest popularity-contest/participate boolean false
 d-i grub-installer/only_debian boolean true
 d-i grub-installer/bootdev string default
 d-i grub-installer/force-efi-extra-removable boolean true
+d-i preseed/early_command string wget curl vim
 d-i finish-install/reboot_in_progress note
 d-i debian-installer/exit/reboot boolean true
 d-i preseed/late_command string	\
 sed -ri 's/^#?PermitRootLogin.*/PermitRootLogin yes/g' /target/etc/ssh/sshd_config; \
-sed -ri 's/^#?PasswordAuthentication.*/PasswordAuthentication yes/g' /target/etc/ssh/sshd_config;
-d-i preseed/early_command string wget curl vim
+sed -ri 's/^#?PasswordAuthentication.*/PasswordAuthentication yes/g' /target/etc/ssh/sshd_config; \
+
 echo "
 root soft nofile 512000
 root hard nofile 512000
-">>/etc/security/limits.conf
+">>/etc/security/limits.conf; \
 echo "
 #关闭IPV6
 net.ipv6.conf.all.disable_ipv6 = 1
@@ -746,9 +747,9 @@ net.ipv4.tcp_mem = 25600 51200 102400
 net.ipv4.tcp_rmem = 4096 87380 67108864
 net.ipv4.tcp_wmem = 4096 65536 67108864
 net.ipv4.tcp_mtu_probing = 1
-">/etc/sysctl.conf
-sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/' /etc/default/grub
-update-grub
+">/etc/sysctl.conf; \
+sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/' /etc/default/grub; \
+update-grub; \
 EOF
 
 [[ "$loaderMode" != "0" ]] && AutoNet='1'
