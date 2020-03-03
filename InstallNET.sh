@@ -641,7 +641,6 @@ d-i console-setup/layoutcode string us
 d-i keyboard-configuration/xkb-keymap string us
 
 d-i netcfg/choose_interface select $IFETH
-
 d-i netcfg/disable_autoconfig boolean true
 d-i netcfg/dhcp_failed note
 d-i netcfg/dhcp_options select Configure network manually
@@ -651,7 +650,7 @@ d-i netcfg/get_gateway string $GATE
 d-i netcfg/get_nameservers string 8.8.8.8
 d-i netcfg/no_default_route boolean true
 d-i netcfg/confirm_static boolean true
-
+d-i netcfg/get_hostname string Debian
 d-i hw-detect/load_firmware boolean true
 
 d-i mirror/country string manual
