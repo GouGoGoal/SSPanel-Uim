@@ -218,8 +218,7 @@ class TelegramProcess
         } else {
             //群组
               if ($message->getNewChatMember() != null && Config::get('enable_welcome_message') == 'true') {
-                       $bot->sendMessage($message->getChat()->getId(), "欢迎 ".$message->getNewChatMember()->getFirstName()." ".$message->getNewChatMember()->getLastName()."\n有问题找  [帅帅的站长](https://t.me/out_soul)\n私聊  [群组机器人](https://t.me/soulout_bot)  可以查询、签到以及快捷登录\n看不懂英文?  [点击此处](https://t.me/setlanguage/classic-zh-cn)  切换中文", $parseMode = Markdown, $disablePreview = false);
-                         //$bot->sendMessage($message->getChat()->getId(), "欢迎 ".$message->getNewChatMember()->getFirstName()." ".$message->getNewChatMember()->getLastName()."\n有问题找 [帅帅的站长](https://t.me/out_soul)\n 私聊 [群组机器人](https://t.me/soulout_bot) 可以查询、签到以及快捷登录\n看不懂英文?[点击此处](https://t.me/setlanguage/classic-zh-cn)切换中文",'Markdown');
+                       $bot->sendMessage($message->getChat()->getId(), "欢迎 ".$message->getNewChatMember()->getFirstName()." ".$message->getNewChatMember()->getLastName()."\n有问题找  [帅帅的站长](https://t.me/out_soul)\n私聊  [群组机器人](https://t.me/soulout_bot)  可以查询、签到以及快捷登录\n看不懂英文?  [点击此处](https://t.me/setlanguage/classic-zh-cn)  切换中文\n提供TG代理：[SoulOut.Club](https://t.me/soulout_aff) 频道获取", $parseMode = Markdown, $disablePreview = false);
                     }
             if (Config::get('telegram_group_quiet') == 'true') {
                 return;

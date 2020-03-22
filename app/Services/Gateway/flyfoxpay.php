@@ -167,7 +167,7 @@ if ($pay->verify($data)) {
     {
         return '
                     <div class="card-inner">
-										<p class="card-heading">主要充值渠道(支付宝、微信、QQ)</p>
+										<p class="card-heading">备用充值渠道(最小充值金额：3元)</p>
 										<nav class="tab-nav margin-top-no">
 
 											<div class="tab-nav-indicator"></div>

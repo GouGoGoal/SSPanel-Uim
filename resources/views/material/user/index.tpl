@@ -35,11 +35,11 @@
 									</div>
 									<div class="user-info-bottom">
 										<div class="nodeinfo node-flex">
-											<span><i class="icon icon-md">access_time</i> 到期時間：{$user->class_expire}</span>
+												<span><i class="icon icon-md">access_time</i> 到期時間：{$user->class_expire}</span>
 										</div>
 									</div>
 								</div>
-							</div>
+				        </div>
 							<div class="col-xx-12 col-xs-6 col-lg-3">
 								<div class="card user-info">
 									<div class="user-info-main">
@@ -138,57 +138,55 @@
 							<div class="card">
 								<div class="card-main">
 									<div class="card-inner margin-bottom-no">
-                                    <p class="card-heading"> <i class="icon icon-md">notifications_active</i>公告</p>
+                                  
 										{if $ann != null}
 										<p>{$ann->content}</p>
 										{/if}
 									</div>
 								</div>
 							</div>
-
-
+                        </div>
+                        <div class="col-xx-12 col-sm-4">
 							<div class="card quickadd">
 								<div class="card-main">
 									<div class="card-inner margin-bottom-no">
 									<div class="cardbtn-edit">
-											<div class="card-heading"><i class="icon icon-md">phonelink</i> 訂閲地址（<a href="/user/tutorial">使用教程</a>）</div>
-											<div class="reset-flex"><span>重置链接</span><a class="reset-link btn btn-brand-accent btn-flat" ><i class="icon">autorenew</i>&nbsp;</a></div>
-									</div> 
-                                                             <br />SSR
-														<div class="float-clear"><input type="text" class="input form-control form-control-monospace cust-link col-xx-12 col-sm-8 col-lg-7" name="input1" readonly value="{$subUrl}{$ssr_sub_token}?mu=1" readonly="true"><button class="copy-text btn btn-subscription col-xx-12 col-sm-3 col-lg-2" type="button" data-clipboard-text="{$subUrl}{$ssr_sub_token}?mu=1">点击复制</button><br></div>
-                                                            <br />
-                                                           <br />V2ray
-														<div class="float-clear"><input type="text" class="input form-control form-control-monospace cust-link col-xx-12 col-sm-8 col-lg-7" name="input1" readonly value="{$subUrl}{$ssr_sub_token}?mu=2" readonly="true"><button class="copy-text btn btn-subscription col-xx-12 col-sm-3 col-lg-2" type="button" data-clipboard-text="{$subUrl}{$ssr_sub_token}?mu=2">点击复制</button><br></div>
-                                                            <br />
-                                                           <div class="card-heading">若泄漏地址请重置并<a href="/user/edit">修改节点连接密码</a><div>
-                                              </div>
-                                           </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-
+										<div class="card-heading"><i class="icon icon-md">phonelink</i> 订阅地址（<a href="/user/tutorial">使用教程</a>）</div>
+										<div class="reset-flex"><span>重置链接</span><a class="reset-link btn btn-brand-accent btn-flat" ><i class="icon">autorenew</i>&nbsp;</a></div>
+									    </div> 
+                                        <br/>SSR
+									         <div class="float-clear">
+									             <input type="text" class="input form-control form-control-monospace cust-link col-xx-12 col-sm-8 col-lg-8" name="input1" readonly value="{$subUrl}{$ssr_sub_token}?mu=1" readonly="true">
+									             <button class="copy-text btn btn-subscription col-xx-12 col-sm-3 col-lg-3" type="button" data-clipboard-text="{$subUrl}{$ssr_sub_token}?mu=1">点击复制</button>
+									             <br>
+									         </div>
+                                        <br/>
+                                        <br/>V2ray
+										     <div class="float-clear">
+										         <input type="text" class="input form-control form-control-monospace cust-link col-xx-12 col-sm-8 col-lg-8" name="input1" readonly value="{$subUrl}{$ssr_sub_token}?mu=2" readonly="true">
+										         <button class="copy-text btn btn-subscription col-xx-12 col-sm-3 col-lg-3" type="button" data-clipboard-text="{$subUrl}{$ssr_sub_token}?mu=2">点击复制</button>
+										         <br>
+										     </div>
+                                        <br/>
+                                        <div class="card-heading">若泄漏地址请重置并<a href="/user/edit">修改节点连接密码</a><div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
              
 						<div class="col-xx-12 col-sm-4">
-                          
-                         
-
 							<div class="card">
 								<div class="card-main">
 									<div class="card-inner">
                                       <p class="card-heading"><i class="icon icon-md">account_circle</i>{$user->user_name}</p>
 										{*<div id="traffic_chart" style="height: 300px; width: 100%;"></div>
-
                                        <script src="/assets/js/canvasjs.min.js"> </script>
 										<script type="text/javascript">
 											var chart = new CanvasJS.Chart("traffic_chart",
-
-
-
 											{
                                          theme: "light1",
-
-
 												title:{
 													text: "流量使用情况",
 													fontFamily: "Impact",
@@ -200,8 +198,8 @@
 												},
 												data: [
 												{
-													startAngle: -15,
-													indexLabelFontSize: 20,
+													startAngle: -20,
+													indexLabelFontSize: 15,
 													indexLabelFontFamily: "Garamond",
 													indexLabelFontColor: "darkgrey",
 													indexLabelLineColor: "darkgrey",
@@ -520,7 +518,7 @@ initGeetest({
 <!--<script>
 $(function () {
 	$("#result").modal();
-	$("#msg").html("目前微信充值不会到账，请选择支付宝支付");
+	$("#msg").html("近期墙功率较大，请优先使用V2ray、游戏、IPV6和隧道中转节点");
 });
 </script>-->
 {if $recaptcha_sitekey != null}<script src="https://recaptcha.net/recaptcha/api.js" async defer></script>{/if}

@@ -52,44 +52,14 @@
 										</div>
 
 										<div class="tab-pane fade page-course" id="all_ssr_mac">
-											<p>1：把下载的DMG包放入应用程序列表</p>
-											<p><img src="/images/c_mac_1.png"/></p>
-											<p>2：打开程式</p>
-											<p><img src="/images/c_mac_2.png"/></p>
-											<p>3：如提示不安全，请到系统偏好设置打开程式</p>
-											<p><img src="/images/c_mac_3.png"/></p>
-											<p>4：服务器-编辑订阅</p>
-											<p><img src="/images/c_mac_4.png"/></p>
-											<p>5：点击+号后填入订阅链接后手动更新订阅</p>
-											<p><img src="/images/c_mac_5.png"/></p>
-											<p><img src="/images/c_mac_4.png"/></p>
-											<p>6：选择一个节点</p>
-											<p><img src="/images/c_mac_6.png"/></p>
-											<p>7：打开谷歌测试一下吧</p>
-											<p><img src="/images/c_mac_7.png"/></p>
+											<p>请在网盘中下载：V2rayU.dmg</p>
+											<p>使用方法见其<a href='https://github.com/yanue/V2rayU/wiki/V2rayU%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E'>Github地址</a></p>
+
 										</div>
 
 										<div class="tab-pane fade page-course" id="all_ssr_linux">
-											<h3>Ubuntu使用Shadowsocks-qt5科学上网</h3>
-											<h4>说明：shadowsocks-qt5是ubuntu上一个可视化的版本</h4>
-											<hr/>
-											<h5>安装shadowsocks-qt5</h5>
-											<pre><code>1.$ sudo add-apt-repository ppa:hzwhuang/ss-qt5
-												2.$ sudo apt-get update
-												3.$ sudo apt-get install shadowsocks-qt5</code></pre>
-											<h5>如果安装成功之后，按<code>win</code>键搜索应该能够找到软件，如下图所示：</h5>
-											<p><img src="/images/c-linux-1.png"/></p>
-											<h5>配置shadowsocks-qt5</h5>
-											<h6>填写对应的服务器IP，端口，密码，加密方式，红色标注地方请与图片一样</h6>
-											<p><img src="/images/c-linux-4.png"/></p>
-											<h5>配置系统代理模式</h5>
-											<p><img src="/images/c-linux-5.png"/></p>
-											<h5>配置浏览器代理模式（本次为Ubuntu自带FireFox浏览器为例）</h5>
-											<p><img src="/images/c-linux-6.png"/></p>
-											<h5>连接并开始上网</h5>
-											<p><img src="/images/c-linux-7.png"/></p>
-											<hr/>
-											<p>本教程由仟佰星云试验截图整理，转载请附本文链接</p>
+                                          <p>你都会玩Linux了，使用教程自己去看吧</p>
+                                          <p><a href='https://github.com/jiangxufeng/v2rayL'>Github地址</a></p>
 										</div>
 
 										<div class="tab-pane fade page-course" id="all_ssr_ios">
@@ -97,7 +67,9 @@
                                             <h3>网站网盘里有共享小火箭账号，可按照介绍安装“Shadowrocket”，完毕后请退出账号！！！</h3>
                                             <li>安装完成后打开软件点击右上角的“+”号，类型选择“Subscribe”，然后URL填写网站的订阅地址，分别备注为V2ray和SSR节点</li>
                                             <li>之后点击“完成”则会更新订阅，之后选择一个节点畅游网络</li>
-                                            <li>新版的小火箭取消了更新订阅的按钮，我们可以在主界面的“服务器节点”这一栏，点击右方带圈的感叹号图标，之后点击完成来更新订阅</li>
+                                            <li>可以在“设置”“服务器订阅”中勾选“打开时更新”，每次打开会有更新提示</li>
+                                            <li>也可以手动更新订阅，订阅菜单处往右滑动是更新按钮</li>
+                                            
                                             <li>“全局路由”解释</li>
                                             <li>配置：根据软件界面下方“配置”来对流量进行分流，推荐使用此<a href="https://github.com/souloutclub/smiproxylist">项目</a>中推荐的配置文件</li>
                                             <li>代理：即全局代理，选择此模式下你手机上所有的流量都经过“Shadowrocket”建议只有遇到无法访问的网站时切换成此规则，非常不推荐一直使用“代理”模式</li>
@@ -108,7 +80,7 @@
                                       
                                       
 										<div class="tab-pane fade page-course" id="all_ssr_android">
-											<p>1：下载“酸酸乳-安卓.apk”<a href="https://www.lanzous.com/b552076"> 相关下载</a></p>
+											<p>1：下载“S$R.apk”<a href="https://www.lanzous.com/b552076"> 相关下载</a>(网盘中可能存放多个SSR应用，使用方法大致相同，都是订阅使用)</p>
                                           
 											<p>2：添加订阅并更新,复制<a href="/user/index">主页</a>的订阅连接</p>
                                           
@@ -127,6 +99,7 @@
 										</div>
 
                                       <div class="tab-pane fade" id="all_v2ray">
+                                            <h3 class="major">v2ray对时间精度要求很高，请确保你的设备为东八区时间，误差不超过2分钟</h3>
                                             <h2 class="major">所有软件在主页“<a href="https://www.lanzous.com/b552076">相关下载</a>”里</h2>
 											<h2 class="major">V2ray使用方法和SSR类似，也是订阅使用</h2>
                                             <h2 class="major">Win端V2ray教程已整合到电脑教程，请<a href="https://www.lanzous.com/b552076" target="_blank">下载</a>查看</h2>
@@ -137,6 +110,7 @@
                                                <p><img src="/images/v2ray4.jpg"/></p>
                                                <p>有时候V2ray流媒体解锁会失效，我们可以设置中打开“启用本地DNS”，然后将“远程DNS”改为127.0.0.1</p> 
                                                <h3 class="major">苹果用户只需更新最新版小火箭即可，最好添加订阅备注以区分V2ray和SSR</h3>
+                                              
                                           
 										</div>
 									</div>

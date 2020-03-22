@@ -28,7 +28,7 @@
               <!--首頁開始-->
 					<header id="header">
 						<div class="logo">
-						<span class="icon fa-rocket"></span>
+						<span class="icon fa-linux"></span>
                       </div>
                        {if $user->isLogin}
 						<div class="content">

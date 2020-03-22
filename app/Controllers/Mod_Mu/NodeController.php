@@ -58,6 +58,7 @@ class NodeController extends BaseController
                 'node_group' => $node->node_group,
                 'node_class' => $node->node_class,
                 'node_speedlimit' => $node->node_speedlimit,
+                //实际倍率*1.2
                 'traffic_rate' => $node->traffic_rate,
                 'mu_only' => $node->mu_only,
                 'sort' => $node->sort,

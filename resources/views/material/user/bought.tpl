@@ -14,34 +14,21 @@
                 <div class="card">
                     <div class="card-main">
                         <div class="card-inner">
-                            <p>系统中您的购买记录。</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-main">
-                        <div class="card-inner">
                             <div class="card-table">
                                 <div class="table-responsive table-user">
                                     {$shops->render()}
                                     <table class="table">
                                         <tr>
-                                            <th>ID</th>
                                             <th>购买时间</th>
                                             <th>商品名称</th>
-                                            <th>内容</th>
                                             <th>价格</th>
                                             <th>续费时间</th>
-                                            <th>续费时重置流量</th>
                                             <th>操作</th>
                                         </tr>
                                         {foreach $shops as $shop}
                                             <tr>
-                                                <td>#{$shop->id}</td>
                                                 <td>{$shop->datetime("Y/m/d",$date_unix)}</td>
                                                 <td>{$shop->shop()->name}</td>
-                                                <td>{$shop->shop()->content()}</td>
                                                 <td>{$shop->price} 元</td>
 
                                                 {if $shop->renew==0}
@@ -50,16 +37,10 @@
                                                     <td>在 {$shop->renew_date()} 续费</td>
                                                 {/if}
 
-                                                {if $shop->shop()->auto_reset_bandwidth==0}
-                                                    <td>不自动重置</td>
-                                                {else}
-                                                    <td>自动重置</td>
-                                                {/if}
 
                                                 <td>
                                                     <a class="btn btn-brand"
-                                                       {if $shop->renew==0}disabled{else}href="javascript:void(0);"
-                                                       onClick="delete_modal_show('{$shop->id}')"{/if}>关闭自动续费</a>
+                                                       {if $shop->renew==0}disabled{else}href="javascript:void(0);" onClick="delete_modal_show('{$shop->id}')"{/if}>关闭自动续费</a>
                                                 </td>
 
                                             </tr>
@@ -112,18 +93,17 @@
 
 <script>
     function delete_modal_show(id) {
-        var deleteid = id;
         $("#delete_modal").modal();
+        document.getElementById('delete_input').setAttribute('data-id', id);
     }
-
     $(document).ready(function () {
-        function delete_id() {
+        function delete_id(id) {
             $.ajax({
                 type: "DELETE",
                 url: "/user/bought",
                 dataType: "json",
                 data: {
-                    id: deleteid
+                    id
                 },
                 success: (data) => {
                     if (data.ret) {
@@ -143,8 +123,8 @@
                 }
             });
         }
-
-        $$.getElementById('delete_input').addEventListener('click', delete_id);
+        $$.getElementById('delete_input').addEventListener('click', () => {
+            delete_id($$.getElementById('delete_input').getAttribute('data-id'));
+        });
     })
-
 </script>

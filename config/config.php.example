@@ -17,16 +17,14 @@ $System_Config['version']='1';	//仅当涉及【需要修改config以外的文�
 $System_Config['key'] = '1234354654756756';						//!!! 瞎 jb 修改此key为随机字符串确保网站安全 !!!
 $System_Config['debug'] =  'false';								//正式环境请确保为 false
 $System_Config['appName'] = '靈魂出竅';							//站点名称
-$System_Config['baseUrl'] = 'https://soulout.club';					//站点地址
-$System_Config['directUrl'] = 'https://outsoul.club';               //直连地址
-$System_Config['apiUrl'] = 'https://api.soulout.club';              //api地址
+$System_Config['baseUrl'] = 'https://outsoul.club';					//站点地址
 $System_Config['subUrl'] = 'https://rss.outsoul.xyz'.'/link/';	//订阅地址，如需和站点名称相同，请不要修改
-$System_Config['muKey'] = 'souloutclub';								//用于校验魔改后端请求，可以随意修改，但请保持前后端一致，否则节点不能工作！
+$System_Config['muKey'] = 'gouzekun';								//用于校验魔改后端请求，可以随意修改，但请保持前后端一致，否则节点不能工作！
 $System_Config['db_driver'] = 'mysql';							//数据库程序
-$System_Config['db_host'] = '3306.soulout.club';		//数据库地址
+$System_Config['db_host'] = 'localhost';						//数据库地址
 $System_Config['db_database'] = 'panel';						//数据库名
-$System_Config['db_username'] = 'GouGoGoal@souloutclub';							//数据库用户名
-$System_Config['db_password'] = 'Gouzekun123!';						//用户名对应的密码
+$System_Config['db_username'] = 'panel';							//数据库用户名
+$System_Config['db_password'] = 'hxeBapzGdh5mAnFX';						//用户名对应的密码
 
 
 //邮件设置--------------------------------------------------------------------------------------------
@@ -37,20 +35,6 @@ $System_Config['sendPageLimit']= 50;	//发信分页 解决大站发公告超时�
 $System_Config['mailgun_key'] = '';
 $System_Config['mailgun_domain'] = '';
 $System_Config['mailgun_sender'] = '';
-
-
-
-
-//域名邮箱
-/*
-$System_Config['smtp_host'] = 'smtp.qiye.163.com';
-$System_Config['smtp_username'] = 'admin@soulout.club';
-$System_Config['smtp_port'] = '994';
-$System_Config['smtp_name'] = '靈魂出竅';
-$System_Config['smtp_sender'] = 'admin@soulout.club';
-$System_Config['smtp_passsword'] = 'gouzekun123';
-$System_Config['smtp_ssl'] = 'true';
-*/
 
 //谷歌邮箱
 $System_Config['smtp_host'] = 'smtp.gmail.com';
@@ -92,9 +76,8 @@ $System_Config['reg_forbidden_ip']='127.0.0.0/8,::1/128';	//注册时默认禁�
 $System_Config['min_port']='30000';							//用户端口池最小值
 $System_Config['max_port']='39999';							//用户端口池最大值
 $System_Config['reg_forbidden_port']='';					//注册时默认禁止访问端口列表，半角英文逗号分割，支持端口段
-$System_Config['mu_suffix']='download.windowsupdate.com';				//单端口多用户混淆参数后缀，可以随意修改，但请保持前后端一致
-$System_Config['mu_regex']='%suffix';
-//$System_Config['mu_regex']='%2m.%suffix';				//单端口多用户混淆参数表达式，%5m代表取用户特征 md5 的前五位，%id 代表用户id,%suffix 代表上面这个后缀。
+$System_Config['mu_suffix']='microsoft.com';				//单端口多用户混淆参数后缀，可以随意修改，但请保持前后端一致
+$System_Config['mu_regex']='%4m.%suffix';				//单端口多用户混淆参数表达式，%5m代表取用户特征 md5 的前五位，%id 代表用户id,%suffix 代表上面这个后缀。
 
 #邀请链接
 $System_Config['inviteNum'] = '20';			//注册后的邀请链接可用次数
@@ -110,10 +93,10 @@ $System_Config['email_verify_iplimit']='10';		//验证码有效期内，单IP可
 
 //已注册用户设置---------------------------------------------------------------------------------------
 #基础
-$System_Config['checkinMin'] = '50';			//用户签到最少流量 单位MB
-$System_Config['checkinMax'] = '150';			//用户签到最多流量
+$System_Config['checkinMin'] = '30';			//用户签到最少流量 单位MB
+$System_Config['checkinMax'] = '60';			//用户签到最多流量
 $System_Config['auto_clean_uncheck_days']='-1';	        //自动清理多少天没签到的0级用户，小于等于0时关闭
-$System_Config['auto_clean_unused_days']='30';	        //自动清理多少天没使用且无流量的用户，小于等于0时关闭
+$System_Config['auto_clean_unused_days']='7';	        //自动清理多少天没使用的0级用户，小于等于0时关闭
 $System_Config['auto_clean_min_money']='0';		//余额低于多少的0级用户可以被清理
 $System_Config['code_payback']='10';			//充值返利百分比
 $System_Config['invite_gift']='2';			//邀请新用户获得流量奖励，单位G
@@ -193,7 +176,7 @@ $System_Config['enable_checkin_captcha'] = 'false';	//启用签到验证码
 
 
 //支付系统设置----------------------------------------------------------------------------------------
-#取值 none | codepay | trimepay | f2fpay | chenAlipay | paymentwall | spay |tomatopay | payjs
+#取值 none | codepay | trimepay | f2fpay | chenAlipay | paymentwall | spay |tomatopay | payjs | bitpayx | flyfoxpay
 $System_Config['payment_system']='flyfoxpay';
 
 #BitPay支付

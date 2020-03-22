@@ -14,8 +14,9 @@
                 <div class="card">
                     <div class="card-main">
                         <div class="card-inner">
-                            <p>商品不可叠加，新购商品会覆盖旧商品的效果</p>
-                            <p>在线设备以IP为单位，若你的多个设备使用同一个WiFi，则记为1个设备（部分节点此规则失效）</p>
+                            <p>商品不可叠加，新购商品会覆盖旧商品的效果，故请等待"巨无霸"或"乐享视频"套餐完全过期后再购买其他套餐</p>
+                            <p>在线设备以IP为单位，若你的多个设备使用同一个WiFi，则记为1个设备（部分节点不遵守此规则，如游戏、中转节点）</p>
+                             <p>"巨无霸"或"乐享视频"套餐将在24小时以后的自然日0点进行重置，例如1月1日08:00购买，则在1月2日24:00重置流量，请知悉</p>
                             <p><i class="icon icon-lg">attach_money</i>当前余额：<font color="#399AF2" size="5">{$user->money}</font> 元</p>
                         </div>
                     </div>
@@ -47,35 +48,12 @@
                             <div class="card-main">
                                 <div class="shop-name">{$shop->name}</div>
                                 <div class="shop-price">{$shop->price}</div>
-                                <div class="shop-tat">
-                                    {if {$shop->reset()} == '0' }
-                                    <span>{$shop->bandwidth()}</span> / <span>{$shop->class_expire()}</span><span>
-                                    {else}
-                                    <span>{$shop->bandwidth()}</span> / <span>{$shop->reset()}</span> × <span> {$shop->class_expire()}</span>
-                                    {/if}
-                                    
-                                </div>
-                                <!--<div class="shop-content">
-                                    <div class="shop-content-left">账号有效期:</div>
-                                    <div class="shop-content-right">{$shop->expire()}<span>天</span></div>
-                                    <div class="shop-content-left">重置周期:</div>
-                                    <div class="shop-content-right">{if {$shop->reset()} == '0' }N / A{else}{$shop->reset_exp()}
-                                            <span>天</span>
-                                        {/if}</div>
-                                    <div class="shop-content-left">重置频率:</div>
-                                    <div class="shop-content-right">{if {$shop->reset()} == '0' }N / A{else}{$shop->reset_value()}
-                                            <span>G</span>
-                                            / {$shop->reset()}
-                                            <span>天</span>
-                                        {/if}</div>
-                                </div>-->
                                 <div class="shop-content-extra">
                                     {foreach $shop->content_extra() as $service}
                                         <div><span class="icon">{$service[0]}</span> {$service[1]}</div>
                                     {/foreach}
                                 </div>
-                                <a class="btn btn-brand-accent shop-btn" href="javascript:void(0);"
-                                   onClick="buy('{$shop->id}',{$shop->auto_renew})">购买</a>
+                                <a class="btn btn-brand-accent shop-btn" href="javascript:void(0);"onClick="buy('{$shop->id}',{$shop->auto_renew})">购买</a>
                             </div>
                         </div>
                     {/foreach}
@@ -183,7 +161,7 @@
                                 <br/>
                                 <div class="checkbox switch" id="autor">
                                     <label for="autorenew">
-                                        <input  class="access-hide" id="autorenew" type="checkbox" >
+                                        <input class="access-hide" id="autorenew" type="checkbox" >
                                         <span class="switch-toggle"></span>到期时自动续费
                                     </label>
                                 </div>

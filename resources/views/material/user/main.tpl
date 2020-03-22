@@ -157,7 +157,7 @@
 							</li>
 							{/if}
                           </ul>
-                        <a class="waves-attach" data-toggle="collapse" href="#ui_menu_contact">聯繫方式</a>
+                        <a class="waves-attach" data-toggle="collapse" href="#ui_menu_contact">聯繫</a>
                         <ul class="menu-collapse collapse in" id="ui_menu_contact">
                        <li>
 							<!--<a href="http://wpa.qq.com/msgrd?v=3&uin=1939442111&site=qq&menu=yes" target="_blank">
@@ -166,7 +166,7 @@
 						</li>
                        
                         <li>
-                            <a class="copy-gmail"  data-clipboard-text="souloutclub@gmail.com">
+                            <a class="copy-gmail"  data-clipboard-text="admin@soulout.club">
 						         <i class="icon icon-lg">email</i>&nbsp;站長の郵箱
 						    </a>
 						</li>
@@ -206,7 +206,7 @@ $(function(){
 
 $(".copy-gmail").click(function () {
 	$("#result").modal();
-	$("#msg").html("已複製到剪貼板：souloutclub@gmail.com");
+	$("#msg").html("已複製到剪貼板：admin@soulout.club");
 });
 </script>
 

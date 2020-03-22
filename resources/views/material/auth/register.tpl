@@ -338,3 +338,9 @@
 
 
 </script>
+<script>
+$(function () {
+	$("#result").modal();
+	$("#msg").html("QQ邮箱经常会将验证邮件列入垃圾箱，请尽量避免使用");
+});
+</script>

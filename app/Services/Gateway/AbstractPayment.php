@@ -38,9 +38,8 @@ abstract class AbstractPayment
         $p->status = 1;
         $p->save();
         $user = User::find($p->userid);
-        //$user->money += $p->total;
-        $user->money = $user->money+$p->total;
-        //$user->money += $p->total*1.2;充值加赠20%
+        //$user->money = $user->money+$p->total;
+        $user->money += $p->total*1; //充值加赠20%
         $user->save();
         $codeq = new Code();
         $codeq->code = $method;
@@ -64,12 +63,12 @@ abstract class AbstractPayment
             $Payback->save();
         }
 
-           if ($codeq->number>=100) 
-                Telegram::Send("一个富可敌国的兄弟赞助了 ".$codeq->number." 元！");
-            else if ($codeq->number>=10) 
-                Telegram::Send("一个财大气粗的兄弟赞助了 ".$codeq->number." 元！");
+           if ($codeq->number>=50) 
+                Telegram::Send("感谢邮箱首四位 “".substr($user->email,0,4)."” 的兄弟送来的 ".$codeq->number." 元大飞机！");
+            else if ($codeq->number>=15) 
+                Telegram::Send("感谢邮箱首四位 “".substr($user->email,0,4)."” 的兄弟送来 ".$codeq->number." 元小火车！");
             else
-                Telegram::Send("一个扣扣索索的兄弟赞助了 ".$codeq->number." 元！");
+                Telegram::Send("感谢邮箱首四位 “".substr($user->email,0,4)."” 的兄弟送来 ".$codeq->number." 元自行车！");
         return 0;
     }
 

@@ -48,7 +48,19 @@
 			<h1 class="content-heading">节点列表</h1>
 		</div>
 	</div>
-
+	<div class="container">
+        <div class="ui-card-wrap">
+            <div class="card">
+                <div class="nodemain">
+                    <div class="card-inner">
+                        <p>不建议手动导入节点，请根据教程进行订阅；节点使用建议仅供参考</p>
+                        <p>倍率：加倍消耗账户流量，例如使用15倍率节点，你实际消耗了1GB流量，而账户中减少15GB(倍率与速度无直接联系，游戏节点限速)</p>
+                        <p>表格中节点的信息分别为：节点名称、当前使用人数、线路情况以及使用建议、当月使用流量、倍率、限速，绿色为在线，红色为离线</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 	<div class="container">
 		<section class="content-inner margin-top-no">
 			<div class="ui-card-wrap">
@@ -56,7 +68,7 @@
 					<div class="col-lg-12 col-sm-12 nodelist">
 							
 							<div class="ui-switch node-switch">
-								<div class="card">
+								<div class="table">
 									<div class="card-main">
 										<div class="card-inner ui-switch">
 											<div class="switch-btn" id="switch-cards"><a href="#" onclick="return false"><i class="mdui-icon material-icons">apps</i></a></div>
@@ -65,6 +77,7 @@
 									</div>
 								</div>
 							</div>
+						
 						
                     <div class="node-cardgroup">
                         {$class=-1}
@@ -92,7 +105,7 @@
                                 <div class="nodeinfo node-flex">
                                     <div class="nodetraffic node-flex"><i class="material-icons node-icon">equalizer</i><span>{if $node['traffic_limit']>0}{$node['traffic_used']}/{$node['traffic_limit']}GB{else}{$node['traffic_used']}GB{/if}</span></div>
                                     <div class="nodecheck node-flex">
-                                        <i class="material-icons node-icon">network_check</i><span>x{$node['traffic_rate']-0.2}</span>
+                                        <i class="material-icons node-icon">network_check</i><span>x{$node['traffic_rate']}</span>
                                     </div>
                                     <div class="nodeband node-flex"><i class="material-icons node-icon">flash_on</i><span>{if {$node['bandwidth']}==0}N/A{else}{$node['bandwidth']}{/if}</span></div>
                                 </div>
@@ -218,7 +231,7 @@
 															{$node['traffic_used']}GB
 														{/if}
 														| <span class="node-icon"><i class="icon icon-lg">network_check</i></span>
-														<span class="node-tr">{$node['traffic_rate']-0.2} 倍率</span> 
+														<span class="node-tr">{$node['traffic_rate']} 倍率</span> 
 														| <span class="node-icon"><i class="icon icon-lg">notifications_none</i></span>
 														<span class="node-status">{$node['status']}</span>
 													</div>

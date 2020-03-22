@@ -1,13 +1,10 @@
-<div class="row">
-
-    <div class="col-lg-6 col-md-6">
-        <p class="card-heading">备用充值渠道(微信扫码)</p>
+<div class="card-inner">
+        <p class="card-heading">主要充值渠道(最小充值金额：5元)</p>
         <div class="form-group form-group-label">
             <label class="floating-label" for="bitpayamount">金额</label>
             <input class="form-control" id="bitpayamount" type="text">
         </div>
     </div>
-</div>
 
 <div class="card-action">
     <div class="card-action-btn pull-left">
@@ -44,8 +41,8 @@
                     if (data.errcode === 0) {
                         $("#readytopay").modal('hide');
                         $$.getElementById('msg').innerHTML = '正在跳转到数字货币支付...'
-                        //window.location.href = data.url;
-                        window.open(data.url);
+                        window.location.href = data.url;
+                        //window.open(data.url);
                     } else {
                         $("#result").modal();
                         $$.getElementById('msg').innerHTML = data.errmsg

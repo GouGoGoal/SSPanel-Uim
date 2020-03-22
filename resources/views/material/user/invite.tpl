@@ -15,7 +15,6 @@
                         <div class="card-main">
                             <div class="card-inner">
                                 <div class="card-inner">
-                                    <p class="card-heading">说明</p>
                                     <p>您每邀请1位用户注册：</p>
                                     <p>对方充值时您会获得对方充值金额的 <code>{$config["code_payback"]} %</code> 的返利。</p>
                                     <p class="card-heading">已获得返利：<code>{$paybacks_sum}</code> 元</p>
@@ -43,14 +42,14 @@
                                             <p>剩余可邀请次数：{if $user->invite_num<0}无限{else}
                                                 <code>{$user->invite_num}</code>{/if}</p>
                                             <p>发送邀请链接给有需要的人，邀请他人注册时，请将以下链接发给被邀请者</p>
-                                            <p>请不要将此邀请链接发送到QQ空间、百度贴吧等国内公共网络区域</p>
+                                            <p>请勿将此邀请链接发送到QQ空间、百度贴吧等国内公共网络区域</p>
                                             <div class="invite-link">
                                                 <input type="text"
                                                        class="input form-control form-control-monospace cust-link"
                                                        name="input1" readonly=""
                                                        value="{$config["directUrl"]}/auth/register?code={$code->code}">
                                                 <button class="copy-text btn btn-subscription" type="button"
-                                                        data-clipboard-text="{$config["baseUrl"]}/auth/register?code={$code->code}">
+                                                        data-clipboard-text="{$config["directUrl"]}/auth/register?code={$code->code}">
                                                     点击复制
                                                 </button>
                                             </div>
@@ -60,7 +59,7 @@
                             </div>
                         </div>
                         {if $config['custom_invite_price']>=0}
-                            <div class="col-xx-12 {if $config['invite_price']>=0}col-lg-6{/if}">
+                            <div class="col-xx-12 {if $config['invite_price']>=0}col-lg-12{/if}">
                                 <div class="card margin-bottom-no">
                                     <div class="card-main">
                                         <div class="card-inner margin-bottom-no">
@@ -73,7 +72,7 @@
                                                                 class="icon">check</span>&nbsp;
                                                     </button>
                                                 </div>
-                                                <p>例:输入<code>vip</code>则链接变为<code>{$config["baseUrl"]}
+                                                <p>例:输入<code>vip</code>则链接变为<code>{$config["directUrl"]}
                                                         /auth/register?code=vip</code></p>
                                                 <div class="form-group form-group-label">
                                                     <label class="floating-label"
@@ -90,7 +89,7 @@
                     {/if}
 
                     {if $config['invite_price']>=0}
-                        <div class="col-xx-12 {if $config['custom_invite_price']>=0}col-lg-6{/if}">
+                        <div class="col-xx-12 {if $config['custom_invite_price']>=0}col-lg-12{/if}">
                             <div class="card margin-bottom-no">
                                 <div class="card-main">
                                     <div class="card-inner">
@@ -136,18 +135,18 @@
                                         {$paybacks->render()}
                                         <table class="table">
                                             <tr>
-
-                                                <!--   <th>ID</th> -->
                                                 <th>ID</th>
-                                                <th>被邀请用户ID</th>
+                                                <th>被邀请用户邮箱</th>
                                                 <th>获得返利</th>
                                             </tr>
                                             {foreach $paybacks as $payback}
                                                 <tr>
-
-                                                    <!--       <td>#{$payback->id}</td> -->
                                                     <td>{$payback->id}</td>
-                                                    <td>{$payback->userid}</td>
+                                                    {if $payback->user()!=null}
+                                                        <td>{$payback->user()->email}</td>
+                                                    {else}
+                                                        <td>该用户已注销</td>
+                                                    {/if}
                                                     <td>{$payback->ref_get} 元</td>
 
                                                 </tr>

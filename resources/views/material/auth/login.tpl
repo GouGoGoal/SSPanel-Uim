@@ -37,13 +37,13 @@
                 <div class="auth-help auth-row">
                     <div class="auth-help-table auth-row">
                         <div class="checkbox checkbox-adv">
-                            <!--<label for="remember_me">
+                            <label for="remember_me">
                                 <input class="access-hide" value="week" id="remember_me" name="remember_me"
                                        type="checkbox">记住我</input>
                                 <span class="checkbox-circle"></span>
                                 <span class="checkbox-circle-check"></span>
                                 <span class="checkbox-circle-icon icon">done</span>
-                            </label>-->
+                            </label>
                         </div>
                         <a href="/password/reset">忘记密码？</a>
                     </div>
