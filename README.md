@@ -16,8 +16,8 @@ bash <(wget --no-check-certificate -qO- 'https://github.com/GouGoGoal/SSPanel-Ui
 根据LNMP教程安装好环境<br>
 #php删除函数<br>
 ```
-vi /etc/php/7.3/fpm/php.ini <br>
-# disable_functions 后加入下方函数
+vi /etc/php/7.3/cli/php.ini
+# disable_functions 确保没有下列函数
 system,proc_open,proc_get_status,putenv,
 ```
 在网站根目录安装
