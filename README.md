@@ -13,6 +13,10 @@ bash <(wget --no-check-certificate -qO- 'https://github.com/GouGoGoal/SSPanel-Ui
 台湾源
 --mirror 'http://ftp.tw.debian.org/debian/'
 ```
+安装必要软件包
+```
+apt install -y curl vim wget unzip apt-transport-https lsb-release ca-certificates git
+```
 根据LNMP教程安装好环境<br>
 #php删除函数<br>
 ```
