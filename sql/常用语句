@@ -1,7 +1,7 @@
 #夜间自动调低倍率，节点后边带*号则调低
-0 1 * * * root mysql -uroot -ppasswd -e "use SSPanel;update ss_node set traffic_rate =traffic_rate/2 where name like '%*';"
+0 1 * * * root mysql -uroot -ppasswd -e "use SSPanel;update ss_node set traffic_rate =traffic_rate/2 where name like '\%*';"
 #
-0 1 * * * root mysql -uroot -ppasswd -e "use SSPanel;update ss_node set traffic_rate =traffic_rate/2 where name like '%*';"
+0 1 * * * root mysql -uroot -ppasswd -e "use SSPanel;update ss_node set traffic_rate =traffic_rate/2 where name like '\%*';"
 
 ##查看某个时间段，用户的购买情况
 select userid,price,email 
