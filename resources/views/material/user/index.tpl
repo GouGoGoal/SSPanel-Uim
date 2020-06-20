@@ -12,8 +12,7 @@
 		<div class="container">
 			<section class="content-inner margin-top-no">
 				<div class="ui-card-wrap">
-
-						<div class="col-xx-12 col-xs-6 col-lg-3">
+						    <div class="col-xx-12 col-xs-6 col-lg-4">
 								<div class="card user-info">
 									<div class="user-info-main">
 										<div class="nodemain">
@@ -39,13 +38,13 @@
 										</div>
 									</div>
 								</div>
-				        </div>
-							<div class="col-xx-12 col-xs-6 col-lg-3">
+				            </div>
+							<div class="col-xx-12 col-xs-6 col-lg-4">
 								<div class="card user-info">
 									<div class="user-info-main">
 										<div class="nodemain">
 											<div class="nodehead node-flex">
-												<div class="nodename">餘額</div>
+												<div class="nodename">余额</div>
 												<a href="/user/code" class="card-tag tag-green">充值</a>
 											</div>
 											<div class="nodemiddle node-flex">
@@ -62,12 +61,12 @@
 									</div>
 									<div class="user-info-bottom">
 										<div class="nodeinfo node-flex">
-											<span href="/user/shop"><i class="icon icon-md">attach_money</i>不定期清理0余额过期账号</span>
+											<span href="/user/shop"><i class="icon icon-md">attach_money</i>0余额的账户过期将被清理</span>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="col-xx-12 col-xs-6 col-lg-3">
+							<div class="col-xx-12 col-xs-6 col-lg-4">
 								<div class="card user-info">
 									<div class="user-info-main">
 										<div class="nodemain">
@@ -93,41 +92,6 @@
 									<div class="user-info-bottom">
 										<div class="nodeinfo node-flex">
 											<span><i class="icon icon-md">donut_large</i> 在线设备数/设备限制数</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xx-12 col-xs-6 col-lg-3">
-								<div class="card user-info">
-									<div class="user-info-main">
-										<div class="nodemain">
-											<div class="nodehead node-flex">
-												<div class="nodename">賬戶状态</div>
-												<a href="/user/shop" class="card-tag tag-orange">升級</a>
-											</div>
-											<div class="nodemiddle node-flex">
-												<div class="nodetype">
-													{if $user->class!=0}
-													<dd>VIP</dd>
-													{else}
-													<dd>未付費</dd>
-													{/if}
-												</div>
-											</div>
-										</div>
-										<div class="nodestatus">
-											<div class="infocolor-red">
-												<i class="icon icon-md t4-text">stars</i>
-											</div>
-										</div>
-									</div>
-									<div class="user-info-bottom">
-										<div class="nodeinfo node-flex">
-										{if $user->class!=0}
-											<span><i class="icon icon-md">tag_faces</i> 用钱创造快乐</span>
-										{else}
-										    <span><i class="icon icon-md">mood_bad</i>没钱让我很难办啊 </span>
-										{/if}
 										</div>
 									</div>
 								</div>
@@ -168,6 +132,7 @@
 										         <br>
 										     </div>
                                         <br/>
+									    <div class="card-heading">ClashR、Surge等可通过<a href="javascript:void(0);" onclick=javascript:window.open('https://subweb.'+window.location.hostname,"_blank")>扩展订阅</a>自行转换</div>
                                         <div class="card-heading">若泄漏地址请重置并<a href="/user/edit">修改节点连接密码</a><div>
                                     </div>
                                 </div>
@@ -518,7 +483,7 @@ initGeetest({
 <!--<script>
 $(function () {
 	$("#result").modal();
-	$("#msg").html("近期墙功率较大，请优先使用V2ray、游戏、IPV6和隧道中转节点");
+	$("#msg").html("测试功能，夜间流量节点倍率调低，详情查看公告");
 });
 </script>-->
 {if $recaptcha_sitekey != null}<script src="https://recaptcha.net/recaptcha/api.js" async defer></script>{/if}

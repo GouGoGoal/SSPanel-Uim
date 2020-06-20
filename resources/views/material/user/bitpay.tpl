@@ -1,5 +1,5 @@
 <div class="card-inner">
-        <p class="card-heading">主要充值渠道(最小充值金额：5元)</p>
+        <p class="card-heading">备用充值渠道(支付宝、微信、USDT，最小金额：5元)</p>
         <div class="form-group form-group-label">
             <label class="floating-label" for="bitpayamount">金额</label>
             <input class="form-control" id="bitpayamount" type="text">

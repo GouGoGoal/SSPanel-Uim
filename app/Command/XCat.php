@@ -39,7 +39,11 @@ class XCat
                 return $this->createAdmin();
             case ('resetTraffic'):
                 return $this->resetTraffic();
-            case ('setDiscord'):
+            case ('Traffic_Rate_Add'):
+                return Job::Traffic_Rate_Add();
+			case ('Traffic_Rate_Less'):
+                return Job::Traffic_Rate_Less();
+			case ('setDiscord'):
                 return Discord::set();
             case ('setTelegram'):
                 return $this->setTelegram();

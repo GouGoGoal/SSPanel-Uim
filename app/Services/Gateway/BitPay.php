@@ -150,7 +150,7 @@ class BitPay extends AbstractPayment
         $isPaid = $data !== null && $data['status'] !== null && $data['status'] === 'PAID';
         // file_put_contents(BASE_PATH.'/bitpay_notify.log', $resultVerify."\r\n".$isPaid."\r\n", FILE_APPEND);
         if ($resultVerify && $isPaid) {
-            $this->postPayment($data['merchant_order_id'], 'BitPay');
+            $this->postPayment($data['merchant_order_id'], '备用充值渠道');
             // echo 'SUCCESS';
             $return = [];
             $return['status'] = 200;
@@ -180,7 +180,7 @@ class BitPay extends AbstractPayment
             $isPaid = $data !== null && $data['order'] !== null && $data['order']['status'] !== null && $data['order']['status'] === 'PAID';
             // file_put_contents(BASE_PATH.'/bitpay_return.log', $pid . " " . $data ."\r\n". $isPaid . "\r\n", FILE_APPEND);
             if ($isPaid) {
-                $this->postPayment($pid, 'BitPay');
+                $this->postPayment($pid, '备用充值渠道');
                 $success = 1;
             } else {
                 $success = 0;

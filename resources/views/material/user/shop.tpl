@@ -15,6 +15,8 @@
                     <div class="card-main">
                         <div class="card-inner">
                             <p>商品不可叠加，新购商品会覆盖旧商品的效果，故请等待"巨无霸"或"乐享视频"套餐完全过期后再购买其他套餐</p>
+                            <p>本站商品严谨在淘宝、QQ、微信等环境倒卖，如有发现删号不退款</p>
+							<p>本站所有套餐对节点速度不限制也不保障，实际使用速度取决于本地宽带和服务器带宽</p>
                             <p>在线设备以IP为单位，若你的多个设备使用同一个WiFi，则记为1个设备（部分节点不遵守此规则，如游戏、中转节点）</p>
                              <p>"巨无霸"或"乐享视频"套餐将在24小时以后的自然日0点进行重置，例如1月1日08:00购买，则在1月2日24:00重置流量，请知悉</p>
                             <p><i class="icon icon-lg">attach_money</i>当前余额：<font color="#399AF2" size="5">{$user->money}</font> 元</p>
@@ -124,15 +126,15 @@
                             </div>
                             <div class="modal-inner">
                                 <div class="form-group form-group-label">
-                                    <div>流量与时长不叠加，请临近过期或流量用尽后再购买</div>
-                                     <div>购买前请前往购买记录里取消自动续费</div><br>
-                                     <div>是否确定购买？</div>
+                                     <div>购买前请检查之前的"自动续费"是否已生效,否则会造成重复扣费</div>
+                                    <div>若当前有"巨无霸""乐享视频"套餐尚未过期</div>
+                                    <div>请待其过期后再购买流量型套餐</div><br>
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <p class="text-right">
                                     <button class="btn btn-flat btn-brand waves-attach" data-dismiss="modal"
-                                            id="coupon_input" type="button">确定
+                                            id="coupon_input" type="button">我已知晓
                                     </button>
                                 </p>
                             </div>

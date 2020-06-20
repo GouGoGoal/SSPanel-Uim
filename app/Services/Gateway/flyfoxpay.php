@@ -154,7 +154,7 @@ $out_trade_no = $data['out_trade_no'];
 if ($pay->verify($data)) {
     //验证支付状态
     if ($data['trade_status'] == 'TRADE_SUCCESS') {
-        $this->postPayment($data['out_trade_no'], "在线支付");
+        $this->postPayment($data['out_trade_no'], "主要充值渠道");
 		header("Location: /user/code");
         //这里就可以放心的处理您的业务流程了
         //您可以通过上面的商户订单号进行业务流程处理
@@ -167,7 +167,7 @@ if ($pay->verify($data)) {
     {
         return '
                     <div class="card-inner">
-										<p class="card-heading">备用充值渠道(最小充值金额：3元)</p>
+										<p class="card-heading">主要充值渠道(最小金额：3元)</p>
 										<nav class="tab-nav margin-top-no">
 
 											<div class="tab-nav-indicator"></div>

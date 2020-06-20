@@ -76,7 +76,7 @@
                                     </button>
                                     <a href="" onclick="return false;" data-toggle='modal'
                                        data-target='#email_nrcy_modal'
-                                       class="auth-help-reg">QQ邮箱注意<br/>收不到验证码？</a>
+                                       class="auth-help-reg">收不到验证码？</a>
                                 </div>
                             </div>
                         </div>

@@ -65,10 +65,10 @@ abstract class AbstractPayment
 
            if ($codeq->number>=50) 
                 Telegram::Send("感谢邮箱首四位 “".substr($user->email,0,4)."” 的兄弟送来的 ".$codeq->number." 元大飞机！");
-            else if ($codeq->number>=15) 
-                Telegram::Send("感谢邮箱首四位 “".substr($user->email,0,4)."” 的兄弟送来 ".$codeq->number." 元小火车！");
-            else
-                Telegram::Send("感谢邮箱首四位 “".substr($user->email,0,4)."” 的兄弟送来 ".$codeq->number." 元自行车！");
+            #else if ($codeq->number>=15) 
+            #    Telegram::Send("感谢邮箱首四位 “".substr($user->email,0,4)."” 的兄弟送来 ".$codeq->number." 元小火车！");
+            #else
+            #    Telegram::Send("感谢邮箱首四位 “".substr($user->email,0,4)."” 的兄弟送来 ".$codeq->number." 元自行车！");
         return 0;
     }
 

@@ -1,4 +1,4 @@
-<!DOCTYPE HTML> 
+﻿<!DOCTYPE HTML> 
 <!--
 	Dimension by HTML5 UP
 	html5up.net | @ajlkn
@@ -11,6 +11,7 @@
 	<head>
 		<title>{$config["appName"]}</title>
         <meta name="keywords" content=""/>
+		<meta name="wolfpay" content="0f80ff5efb730572072ae261c5b380fb">
         <meta name="description" content=""/>
         <meta charset="utf-8" />
         <link rel="shortcut icon" href="/favicon.ico"/>
@@ -51,10 +52,10 @@
                       </div>	
 					  	<nav>
 							<ul>
-                                <!--<li><a href="#1">簡介</a></li>-->
+                                <li><a href="#4">联系我们</a></li>
 					            <li><a href="/user">用戶中心</a></li>
-					            <li><a href="/state/" target="_blank">節點監控</a></li>
 								<li><a href="/user/logout">退出登錄</a></li>
+								<li><a href="/state/" target="_blank">節點監控</a></li>
                         </ul>
 						</nav>
                               {else}
@@ -65,16 +66,16 @@
 								如果想自定義文本請刪除下面這段script代碼,格式為
 								<p>自定義文本</p>
 								-->
-								<div id="hitokoto"><script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script></div>
+								<!--<div id="hitokoto"><script src="https://international.v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script></div>-->
+								<p>少年啊，成为神话吧</p>
                           </div>
                       </div>	
                               <nav>
 							<ul>
-                               <li><a href="#1">簡介</a></li>
+                               <li><a href="#1">特色介绍</a></li>
 								<li><a href="/auth/login">登錄</a></li>
 								<li><a href="/auth/register">註冊</a></li>
-								<li><a href="/state/" target="_blank">監控</a></li>
-                              
+								<li><a href="#4">服務條款</a></li>
                            </ul>
 						</nav>
                               {/if}
@@ -82,28 +83,23 @@
               </header> 
               <!--首頁結束-->
 					<div id="main">
-                      <!--標簽1開始-->
-                      <article id="1">
-                      <h2 class="major">簡介</h2>
-                      <p>便纵有千种风情，更与何人说</p></article>
-					  <!--
-					  簡介修改示例: 
-					  <p> 123</p>
-					  一個  <p> 123</p>  為一行，請不要刪除 </article>
-					  -->
-                     <!--標簽4開始-->
-                      <article id="4">
-								<h2 class="major">聯系我們</h2>
-								<ul class="icons">
-                                   <p>此處填寫聯系方式</p>
-                                    <li>
-                                      <a target="_blank" href="#" class="icon fa-facebook">
-									 <!-- 請在fontawesome.com尋找替換圖標 href替換鏈接 -->
-                                      <span class="label">Facebook</span>
-                                      </a>
-                                    </li>
-                                  </ul>
-                                  </article>
+					    <!--標簽1開始-->
+                        <article id="1">
+                            <h2 class="major">特色介绍</h2>
+                            <p>独家流媒体解锁，非游戏节点均支持各区流媒体，香港节点也可流畅观看动画疯</p>
+                            <p>大流量套餐，流量不再省省省</p>
+                            <p>国内中转加速，电信、长宽用户有福了</p>
+                            <p>内含游戏节点，且无需额外付费</p>
+                            <p>不限速度，畅快浏览(除游戏节点，实际速度受限于本地环境)</p>
+							<p>夜间部分节点流量消耗减半</p>
+					    </article>
+                        <!--標簽4開始-->
+                        <article id="4">
+						   <h2 class="major">服务条款</h2>
+						   <p>注册后有24小时2G流量试用，不设退款服务，请试用满意后再进行充值</p>
+						   <p>本站需客户具备一定的动手能力，如果脑力不发达请寻找移步一键VPN</p>
+						   <p>请遵守当地国家或地区的法律，若违反相关规则，我站有权利删除违规用户</p>
+                        </article>
                       	<article id="login">  
 		
 								<h2 class="major">登錄</h2>
@@ -181,26 +177,7 @@ try{
 		});
 	})
 
-/*
-  window.addEventListener('load',()=>{
-		fetch('https://api.lwl12.com/hitokoto/v1?encode=realjson',{
-			method: 'GET',
-		}).then((response)=>{
-			return response.json();
-		}).then((r)=>{
-			insertHitokoto(r);
-		})
-	});
 
-	function insertHitokoto(data) {
-		let hitokoto = document.getElementById('lwlhitokoto');
-		if (data.author || data.source) {
-			hitokoto.innerHTML = `${ldelim}data.text{rdelim} —— ${ldelim}data.author{rdelim} ${ldelim}data.source{rdelim}`;
-		} else {
-			hitokoto.innerHTML = `${ldelim}data.text{rdelim}`;
-		}
-	}
- */
 </script>
 </body>
 </html>

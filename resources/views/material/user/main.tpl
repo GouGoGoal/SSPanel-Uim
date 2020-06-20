@@ -111,9 +111,14 @@
 								</a>
 							</li>
 							<li>
+							       <a href="javascript:void(0);" onclick=javascript:window.open('https://subweb.'+window.location.hostname,"_blank")>
+								    <i class="icon icon-lg">link</span>&nbsp</i>&nbsp;扩展订阅
+								</a>
+							</li>
+							<li>
                             <!--<a href="/user/relay">
                                 <i class="icon icon-lg">compare_arrows</i>&nbsp;中轉規則</a>
-                          </li>-->
+                            </li>-->
                           	<li>
 								<a href="/user/trafficlog">
 									<i class="icon icon-lg">hourglass_empty</i>&nbsp;流量記錄
@@ -125,7 +130,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="https://www.lanzous.com/b552076" target="_blank">
+								<a href="https://soulout.lanzous.com/b0vg7mfg" target="_blank">
 									<i class="icon icon-lg">apps</i>&nbsp;应用网盘
 								</a>
 							</li>
@@ -199,7 +204,7 @@
 		</div>
 	</nav>
 
-  <script>
+<script>
 $(function(){
 	new Clipboard('.copy-gmail');
 });
@@ -208,6 +213,22 @@ $(".copy-gmail").click(function () {
 	$("#result").modal();
 	$("#msg").html("已複製到剪貼板：admin@soulout.club");
 });
+</script>
+<!--<script>
+function subweb_jump() {
+var host = window.location.host;
+if (host=="soulout.club") {
+    window.open("https://subweb.soulout.club");
+}else if (host=="outsoul.club") {
+window.open("https://subweb.outsoul.club");
+}
+}
+</script>-->
+<script>
+function subweb_jump() {
+host = window.location.host;
+if (host=="soulout.club") {
+
 </script>
 
 

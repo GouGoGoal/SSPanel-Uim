@@ -185,12 +185,6 @@ class AuthController extends BaseController
                 $res['msg'] = '未填写邮箱';
                 return $response->getBody()->write(json_encode($res));
             }
-        //屏蔽临时邮箱
-        if (!preg_match('/qq.com$|gmail.com$|163.com$|icloud.com$|126.com$|sina|139.com$|outlook.com$|msn.com$|hotmail.com$|foxmail.com$|yeah.net$|aliyun.com$/i',$email)) {
-             $res['ret'] = 0;
-             $res['msg'] = "请使用Gmail、iCloud等常见邮箱注册，QQ邮箱请将souloutclub@gmail.com加入白名单";
-             return $response->getBody()->write(json_encode($res));
-        }
 
             // check email format
             if (!Check::isEmailLegal($email)) {
@@ -198,7 +192,12 @@ class AuthController extends BaseController
                 $res['msg'] = '邮箱无效';
                 return $response->getBody()->write(json_encode($res));
             }
-
+            //屏蔽临时邮箱
+            if (!preg_match('/qq.com$|gmail.com$|163.com$|icloud.com$|126.com$|sina|139.com$|outlook.com$|msn.com$|hotmail.com$|foxmail.com$|yeah.net$|aliyun.com$/i',$email)) {
+                $res['ret'] = 0;
+                $res['msg'] = "请使用Gmail、iCloud等常见邮箱注册，QQ邮箱请将souloutclub@gmail.com加入白名单";
+                return $response->getBody()->write(json_encode($res));
+            }
             $user = User::where('email', '=', $email)->first();
             if ($user != null) {
                 $res['ret'] = 0;

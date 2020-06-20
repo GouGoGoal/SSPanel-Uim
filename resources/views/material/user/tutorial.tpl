@@ -44,7 +44,7 @@
                                       
 										<div class="tab-pane fade active in page-course" id="all_ssr_windows">
                                                 <ul>Win端SSR&V2ray使用教程已随软件打包放在了网盘里，可下载查看</ul>
-                                                <ul><a href="https://www.lanzous.com/b552076" target="_blank">点击此处前往网盘</a></ul>
+                                                <ul><a href="https://soulout.lanzous.com/b0vg7mfg" target="_blank">点击此处前往网盘</a></ul>
                                                 <ul>请尽量避免安装360卫士/百度/2345等国产“安全”软件</ul>
                                                 <ul>如果加速游戏可使用Netch或SStap，教程也请前往网盘寻找</ul>
 												
@@ -80,7 +80,7 @@
                                       
                                       
 										<div class="tab-pane fade page-course" id="all_ssr_android">
-											<p>1：下载“S$R.apk”<a href="https://www.lanzous.com/b552076"> 相关下载</a>(网盘中可能存放多个SSR应用，使用方法大致相同，都是订阅使用)</p>
+											<p>1：下载“S$R.apk”<a href="https://soulout.lanzous.com/b0vg7mfg"> 相关下载</a>(网盘中可能存放多个SSR应用，使用方法大致相同，都是订阅使用)</p>
                                           
 											<p>2：添加订阅并更新,复制<a href="/user/index">主页</a>的订阅连接</p>
                                           
@@ -100,9 +100,9 @@
 
                                       <div class="tab-pane fade" id="all_v2ray">
                                             <h3 class="major">v2ray对时间精度要求很高，请确保你的设备为东八区时间，误差不超过2分钟</h3>
-                                            <h2 class="major">所有软件在主页“<a href="https://www.lanzous.com/b552076">相关下载</a>”里</h2>
+                                            <h2 class="major">所有软件在主页“<a href="https://soulout.lanzous.com/b0vg7mfg">相关下载</a>”里</h2>
 											<h2 class="major">V2ray使用方法和SSR类似，也是订阅使用</h2>
-                                            <h2 class="major">Win端V2ray教程已整合到电脑教程，请<a href="https://www.lanzous.com/b552076" target="_blank">下载</a>查看</h2>
+                                            <h2 class="major">Win端V2ray教程已整合到电脑教程，请<a href="https://soulout.lanzous.com/b0vg7mfg" target="_blank">下载</a>查看</h2>
                                             <h3 class="major">安卓端下载V2rayNG</h3>
                                                <p>如图添加订阅，同样添加订阅，然后再更新</p>
                                                <p>在“设置”里建议选择分应用代理，路由模式为“绕过局域网和大陆地址”</p> 

@@ -66,6 +66,9 @@ $app->post('/notify', App\Controllers\HomeController::class . ':notify');
 $app->get('/tos', App\Controllers\HomeController::class . ':tos');
 $app->get('/staff', App\Controllers\HomeController::class . ':staff');
 $app->post('/telegram_callback', App\Controllers\HomeController::class . ':telegram');
+//wolfpay
+$app->post('/wolfpay_back/{type}', 'App\Services\Payment:notify');
+$app->get('/wolfpay_back/{type}', 'App\Services\Payment:notify');
 
 //翔狐支付
 $app->post('/flyfoxpay_back/{type}', 'App\Services\Payment:notify');

@@ -13,9 +13,8 @@ class TelegramProcess
 {
     private static $all_rss = [
         'clean_link' => '重置订阅链接',
-        '?mu=0' => 'SSR普通订阅',
-        '?mu=1' => 'SSR单端口订阅★',
-        '?mu=2' => 'V2ray订阅★',];
+        '?mu=1' => 'SSR订阅',
+        '?mu=2' => 'V2ray订阅',];
 
     private static function callback_bind_method($bot, $message, $command)
     {
@@ -47,10 +46,14 @@ class TelegramProcess
         if ($user != null) {
             switch ($command) {
                 case 'traffic':
-                    $reply['message'] = '您当前的流量状况：
-今日已使用 ' . $user->TodayusedTraffic() . ' ' . number_format(($user->u + $user->d - $user->last_day_t) / $user->transfer_enable * 100, 2) . '%
-今日之前已使用 ' . $user->LastusedTraffic() . ' ' . number_format($user->last_day_t / $user->transfer_enable * 100, 2) . '%
-未使用 ' . $user->unusedTraffic() . ' ' . number_format(($user->transfer_enable - ($user->u + $user->d)) / $user->transfer_enable * 100, 2) . '%';
+				  if ($user->class == 0)  
+					$reply['message'] = '账号已过期';
+				  else	
+                  $reply['message'] = '账号过期时间：'.$user->class_expire . '
+今日使用流量：' . $user->TodayusedTraffic() . '
+之前使用流量：' . $user->LastusedTraffic() . '
+剩余可用流量：' . $user->unusedTraffic();
+                  
                     break;
                 case 'checkin':
                     if (!$user->isAbleToCheckin()) {

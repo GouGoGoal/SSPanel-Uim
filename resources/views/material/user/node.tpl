@@ -49,17 +49,17 @@
 		</div>
 	</div>
 	<div class="container">
-        <div class="ui-card-wrap">
-            <div class="card">
-                <div class="nodemain">
-                    <div class="card-inner">
+	    <div class="col-lg-12 col-sm-12">
+		    <div class="card">
+                    <div class="card-main">
+                        <div class="card-inner">
                         <p>不建议手动导入节点，请根据教程进行订阅；节点使用建议仅供参考</p>
                         <p>倍率：加倍消耗账户流量，例如使用15倍率节点，你实际消耗了1GB流量，而账户中减少15GB(倍率与速度无直接联系，游戏节点限速)</p>
                         <p>表格中节点的信息分别为：节点名称、当前使用人数、线路情况以及使用建议、当月使用流量、倍率、限速，绿色为在线，红色为离线</p>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
+			</div>		
+		</div>			
     </div>
 	<div class="container">
 		<section class="content-inner margin-top-no">

@@ -33,6 +33,14 @@ use RuntimeException;
 
 class Job
 {
+	public static function Traffic_Rate_Add()
+	{
+		Telegram::Send('*标节点倍率已恢复倍率，请明晚继续');
+	}
+	public static function Traffic_Rate_Less()
+	{
+		Telegram::Send('*标节点倍率已减半，熬夜容易猝死，Robot建议通宵');
+	}
     public static function syncnode()
     {
         $nodes = Node::all();
@@ -147,9 +155,9 @@ class Job
         NodeOnlineLog::where('log_time', '<', time() - 86400 * 1)->delete();
         TrafficLog::where('log_time', '<', time() - 86400 * 1)->delete();
         DetectLog::where('datetime', '<', time() - 86400 * 1)->delete();
-        Speedtest::where('datetime', '<', time() - 86400 * 1)->delete();
+        #Speedtest::where('datetime', '<', time() - 86400 * 1)->delete();
         EmailVerify::where('expire_in', '<', time() - 86400 * 1)->delete();
-        system('rm ' . BASE_PATH . '/storage/*.png', $ret);
+        system('rm -rf' . BASE_PATH . '/storage/*.png', $ret);
         Telegram::Send('已清理数据库过期日志，感觉身体被掏空~');
 
         //auto reset
@@ -180,18 +188,18 @@ class Job
                     $user->last_day_t = 0;
                     $user->save();
 
-                    $subject = Config::get('appName') . '-您的流量被重置了';
-                    $to = $user->email;
-                    $text = '您好，根据您所订购的订单 ID:' . $bought->id . '，流量已经被重置为' . $shop->reset_value() . 'GB';
-                    try {
-                        Mail::send($to, $subject, 'news/warn.tpl', [
-                            'user' => $user,
-                            'text' => $text
-                        ], [
-                        ]);
-                    } catch (Exception $e) {
-                        echo $e->getMessage();
-                    }
+                    #$subject = Config::get('appName') . '-您的流量被重置了';
+                    #$to = $user->email;
+                    #$text = '您好，根据您所订购的订单 ID:' . $bought->id . '，流量已经被重置为' . $shop->reset_value() . 'GB';
+                    #try {
+                    #    Mail::send($to, $subject, 'news/warn.tpl', [
+                    #        'user' => $user,
+                    #        'text' => $text
+                    #    ], [
+                    #    ]);
+                    #} catch (Exception $e) {
+                    #    echo $e->getMessage();
+                    #}
                 }
             }
         }
@@ -211,9 +219,9 @@ class Job
                 $user->transfer_enable = $user->auto_reset_bandwidth * 1024 * 1024 * 1024;
                 $user->save();
 
-                # $subject = Config::get('appName') . '-您的流量被重置了';
-                #$to = $user->email;
-                # $text = '您好，根据管理员的设置，流量已经被重置为' . $user->auto_reset_bandwidth . 'GB';
+                $subject = Config::get('appName') . '-您的流量被重置了';
+                $to = $user->email;
+                $text = '您好，根据管理员的设置，流量已经被重置为' . $user->auto_reset_bandwidth . 'GB';
                 try {
                     Mail::send($to, $subject, 'news/warn.tpl', [
                         'user' => $user,
@@ -225,47 +233,6 @@ class Job
                 }
             }
         }
-
-
-        #https://github.com/shuax/QQWryUpdate/blob/master/update.php
-
-        $copywrite = file_get_contents('http://update.cz88.net/ip/copywrite.rar');
-
-        $adminUser = User::where('is_admin', '=', '1')->get();
-
-        $newmd5 = md5($copywrite);
-        $oldmd5 = file_get_contents(BASE_PATH . '/storage/qqwry.md5');
-
-        if ($newmd5 != $oldmd5) {
-            file_put_contents(BASE_PATH . '/storage/qqwry.md5', $newmd5);
-            $qqwry = file_get_contents('http://update.cz88.net/ip/qqwry.rar');
-            if ($qqwry != '') {
-                $key = unpack('V6', $copywrite)[6];
-                for ($i = 0; $i < 0x200; $i++) {
-                    $key *= 0x805;
-                    $key++;
-                    $key &= 0xFF;
-                    $qqwry[$i] = chr(ord($qqwry[$i]) ^ $key);
-                }
-                $qqwry = gzuncompress($qqwry);
-                rename(BASE_PATH . '/storage/qqwry.dat', BASE_PATH . '/storage/qqwry.dat.bak');
-                $fp = fopen(BASE_PATH . '/storage/qqwry.dat', 'wb');
-                if ($fp) {
-                    fwrite($fp, $qqwry);
-                    fclose($fp);
-                }
-            }
-        }
-
-        $iplocation = new QQWry();
-        $location = $iplocation->getlocation('8.8.8.8');
-        $Userlocation = $location['country'];
-        if (iconv('gbk', 'utf-8//IGNORE', $Userlocation) != '美国') {
-            unlink(BASE_PATH . '/storage/qqwry.dat');
-            rename(BASE_PATH . '/storage/qqwry.dat.bak', BASE_PATH . '/storage/qqwry.dat');
-        }
-
-        self::updatedownload();
     }
 
     //   定时任务开启的情况下，每天自动检测有没有最新版的后端，github源来自Miku
@@ -539,7 +506,7 @@ class Job
                                 }
                             }
                         } else {
-                            $notice_text =  $node->name . ' 节点掉线了，睡你**起来修~';
+                            $notice_text =  $node->name . ' 节点故障离线';
                         }
                     }
 
@@ -822,12 +789,11 @@ class Job
             if (Config::get('auto_clean_unused_days') > 0 &&
                 max($user->t, strtotime($user->reg_date)) + (Config::get('auto_clean_unused_days') * 86400) < time() &&
                 //$user->class == 0 &&
-                $user_traffic_left <=0 && //剩余流量小于等于0
-                $user->money <= Config::get('auto_clean_min_money')
+                $user_traffic_left <=0 &&  $user->money <= Config::get('auto_clean_min_money') //剩余流量小于等于0余额小于等于0
             ) {
                 $subject = Config::get('appName') . '-您的用户账户已经被删除了';
                 $to = $user->email;
-                $text = '您好，系统发现您的账号已经 ' . Config::get('auto_clean_unused_days') . ' 天没使用了，帐号已经被删除。';
+                $text = '您好，系统发现您的账号已经 ' . Config::get('auto_clean_unused_days') . ' 天不再使用且无可用流量和余额，帐号已经被删除。';
                 try {
                     Mail::send($to, $subject, 'news/warn.tpl', [
                         'user' => $user,
