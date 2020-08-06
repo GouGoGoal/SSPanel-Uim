@@ -230,7 +230,7 @@ class User extends Model
     public function online_ip_count()
     {
         $uid = $this->attributes['id'];
-        $total = Ip::where('datetime', '>=', time() - 90)->where('userid', $uid)->orderBy('userid', 'desc')->get();
+        $total = Ip::where('datetime', '>=', time() - 60)->where('userid', $uid)->orderBy('userid', 'desc')->get();
         $unique_ip_list = array();
         foreach ($total as $single_record) {
             $single_record->ip = Tools::getRealIp($single_record->ip);
