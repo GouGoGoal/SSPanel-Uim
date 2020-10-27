@@ -21,9 +21,9 @@
                         <div class="card-main">
                             <div class="card-inner">
                                  <div class="card-inner">
-                                    <p class="card-heading">当前余额：<font color="#399AF2" size="5">{$user->money}</font> 元，若充值长时间未到账请联系站长</p>
-                                    <p class="card-heading">Paypal、信用卡充值可能会产生较高手续费，请自行斟酌</p>
-                                    <p class="card-heading">本站原则上不予退款，请谨慎充值</p>
+                                    <p class="card-heading">当前余额：<font color="#399AF2" size="5">{$user->money}</font> 元</p>
+                                    <p class="card-heading">本站设有两个充值渠道，若都发生故障无法充值或付款成功但长时间未到账请联系站长</p>
+                                    <p class="card-heading">本站原则上不予退款，不建议充入过多余额；Paypal、信用卡充值因汇率问题可能会产生较高的手续费</p>
                                 </div>
                             </div>
                         </div>
@@ -165,7 +165,7 @@
 <!--<script>
 $(function () {
 	$("#result").modal();
-	$("#msg").html("主要渠道支持支付宝，备用渠道支持微信,长时间未到账请联系站长");
+	$("#msg").html("请暂时优先使用备用支付渠道付款");
 });
 </script>-->
 

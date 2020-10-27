@@ -80,7 +80,7 @@
                                       
                                       
 										<div class="tab-pane fade page-course" id="all_ssr_android">
-											<p>1：下载“S$R.apk”<a href="https://soulout.lanzous.com/b0vg7mfg"> 相关下载</a>(网盘中可能存放多个SSR应用，使用方法大致相同，都是订阅使用)</p>
+											<p>1：下载SSR应用<a href="https://soulout.lanzous.com/b0vg7mfg"> 相关下载</a>(网盘中可能存放多个SSR应用，使用方法大致相同，都是订阅使用)</p>
                                           
 											<p>2：添加订阅并更新,复制<a href="/user/index">主页</a>的订阅连接</p>
                                           
@@ -104,11 +104,11 @@
 											<h2 class="major">V2ray使用方法和SSR类似，也是订阅使用</h2>
                                             <h2 class="major">Win端V2ray教程已整合到电脑教程，请<a href="https://soulout.lanzous.com/b0vg7mfg" target="_blank">下载</a>查看</h2>
                                             <h3 class="major">安卓端下载V2rayNG</h3>
-                                               <p>如图添加订阅，同样添加订阅，然后再更新</p>
-                                               <p>在“设置”里建议选择分应用代理，路由模式为“绕过局域网和大陆地址”</p> 
+                                               <p>如下图按步骤添加V2ray订阅，然后再更新，更新成功后节点列表会显示出节点，选择一个非账号信息的节点连接即可</p>
+					       <p><img src="/images/v2ray1.jpg"/></p>
+					       <p><img src="/images/v2ray2.jpg"/></p>
+                                               <p>在“设置”里建议使用两种代理方式，一种是分应用代理，将想走代理的应用(例如谷歌商店、谷歌框架等)选中，路由设置里预定义规则选择全局即可；另一种是不开启分应用代理，将预定义规则设置为“绕过局域网或大陆地址”，此时你手机中所有流量都会经过该软件进行分流，属于国外的地址将会通过节点进行访问</p> 
                                                <p><img src="/images/v2ray3.jpg"/></p>
-                                               <p><img src="/images/v2ray4.jpg"/></p>
-                                               <p>有时候V2ray流媒体解锁会失效，我们可以设置中打开“启用本地DNS”，然后将“远程DNS”改为127.0.0.1</p> 
                                                <h3 class="major">苹果用户只需更新最新版小火箭即可，最好添加订阅备注以区分V2ray和SSR</h3>
                                               
                                           

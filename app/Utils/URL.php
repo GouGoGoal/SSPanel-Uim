@@ -289,7 +289,9 @@ class URL
     public static function getV2Url($user, $node, $arrout = 0)
     {
         $item = Tools::v2Array($node->server);
-        $item['v'] = '2';
+	$item['v'] = '2';
+	//alterID均设置为0
+        #$item['aid'] = '0';
         $item['ps'] = $node->name."-".$node->traffic_rate ."倍率";
         $item['id'] = $user->getUuid();
 
@@ -519,29 +521,29 @@ class URL
         )->orderBy('priority', 'DESC')->orderBy('id')->first();
        /***节点描述后加#偏移值***********/
         $node_name = $node->name."-".$node->traffic_rate ."倍率";
-        $temp = explode("#", $node->info);
-        if ($temp[0]!=null){  //如果有#号，则往下执行
+	$temp = explode("#", $node->info);
+	if ($temp[0]!=null){  //如果有#号，则往下执行
             if (is_numeric($temp[1])) {
                 $offset = $temp[1];
-                if ($temp[2]!=null){
-                     $obfs=$temp[2];	
-                     }
-        } 
+                if ($temp[2]!= null ){
+                     $obfs = $temp[2];	
+                }
+            } 
         /*******************************/
-        if ($relay_rule != null) {
-            $node_name .= ' - ' . $relay_rule->dist_node()->name;
-        }
-        if ($mu_port != 0) {
-            $mu_user = User::where('port', '=', $mu_port)->where('is_multi_user', '<>', 0)->first();
-            if ($mu_user == null) {
+            if ($relay_rule != null) {
+                $node_name .= ' - ' . $relay_rule->dist_node()->name;
+            } 
+            if ($mu_port != 0) {
+                $mu_user = User::where('port', '=', $mu_port)->where('is_multi_user', '<>', 0)->first();
+                if ($mu_user == null) {
                 return;
             }
             $mu_user->obfs_param = $user->getMuMd5();
             $mu_user->protocol_param = $user->id . ':' . $user->passwd;
             $user = $mu_user;
-        }
-        if ($is_ss) {
-            if (!self::SSCanConnect($user)) {
+            }
+            if ($is_ss) {
+                if (!self::SSCanConnect($user)) {
                 return;
             }
             $user = self::getSSConnectInfo($user);

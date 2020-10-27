@@ -115,7 +115,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-heading">
-                <h2 class="modal-title">注册 TOS</h2>
+                <h2 class="modal-title">用户须知</h2>
             </div>
             <div class="modal-inner">
                 {include file='reg_tos.tpl'}
@@ -341,6 +341,6 @@
 <script>
 $(function () {
 	$("#result").modal();
-	$("#msg").html("QQ邮箱经常会将验证邮件列入垃圾箱，请尽量避免使用");
+	$("#msg").html("若未收到验证码，请检查垃圾箱，尽量避免使用QQ邮箱。<br>再次尝试未果后，可主动发信至admin@soulout.club，管理员可手动开通。<br>注册成功后有2GB体验流量，体验良好后再进行付费");
 });
 </script>

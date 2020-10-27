@@ -14,11 +14,12 @@
                 <div class="card">
                     <div class="card-main">
                         <div class="card-inner">
-                            <p>商品不可叠加，新购商品会覆盖旧商品的效果，故请等待"巨无霸"或"乐享视频"套餐完全过期后再购买其他套餐</p>
-                            <p>本站商品严谨在淘宝、QQ、微信等环境倒卖，如有发现删号不退款</p>
-							<p>本站所有套餐对节点速度不限制也不保障，实际使用速度取决于本地宽带和服务器带宽</p>
-                            <p>在线设备以IP为单位，若你的多个设备使用同一个WiFi，则记为1个设备（部分节点不遵守此规则，如游戏、中转节点）</p>
-                             <p>"巨无霸"或"乐享视频"套餐将在24小时以后的自然日0点进行重置，例如1月1日08:00购买，则在1月2日24:00重置流量，请知悉</p>
+                            <p>若您在使用期间流量用尽，将会提前结束会员身份(每日重置类套餐会在次日恢复)</p>
+                            <p><b><font color="red" size="4">套餐不可叠加</font></b>，新购商品会覆盖旧商品的效果，故请等待"巨无霸"或"乐享视频"套餐完全过期后再购买其他套餐</p>
+                            <p>请<b><font color="red" size="4">检查自动续费</font></b>，若因未关闭自动续费而造成的重复扣款，本站<b><font color="red" size="4">不予补偿</font></b></p>
+                            <p>本站商品<b><font color="red" size="4">严禁倒卖</font></b>，如有发现删号不退款</p>
+			    <p>本站所有套餐对<b><font color="red" size="4">节点速度不限制也不保障，</font></b>实际使用速度取决于本地宽带和服务器带宽</p>
+                            <p>"<b><font color="red" size="3">巨无霸"或"乐享视频"套餐将在24小时以后的自然日0点进行重置，</font></b>例如1月1日08:00购买，则在1月2日24:00重置流量，请知悉</p>
                             <p><i class="icon icon-lg">attach_money</i>当前余额：<font color="#399AF2" size="5">{$user->money}</font> 元</p>
                         </div>
                     </div>
@@ -126,9 +127,9 @@
                             </div>
                             <div class="modal-inner">
                                 <div class="form-group form-group-label">
-                                     <div>购买前请检查之前的"自动续费"是否已生效,否则会造成重复扣费</div>
+                                     <div>购买前请检查之前的"<b><font color="red" size="5">自动续费</font></b>"是否已生效,否则会造成重复扣费</div>
                                     <div>若当前有"巨无霸""乐享视频"套餐尚未过期</div>
-                                    <div>请待其过期后再购买流量型套餐</div><br>
+                                    <div>请<b><font color="red" size="4">待其过期后</font></b>再购买流量型套餐</div><br>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -306,3 +307,11 @@
     });
 
 </script>
+
+-<script>
+$(function () {
+	$("#result").modal();
+	$("#msg").html("购买前请先查看上方提示，以免造成不必要的损失");
+});
+</script>
+

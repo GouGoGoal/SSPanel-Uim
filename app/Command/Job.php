@@ -34,11 +34,15 @@ use RuntimeException;
 class Job
 {
 	public static function Traffic_Rate_Add()
+
 	{
+		system ('mysql -u'.Config::get('db_username').' -p'.Config::get('db_password'). ' -h'.Config::get('db_host'). ' -D'.Config::get('db_database')." -e \"update ss_node set traffic_rate =traffic_rate*2 where name like '%*%';\"");
 		Telegram::Send('*标节点倍率已恢复倍率，请明晚继续');
 	}
 	public static function Traffic_Rate_Less()
 	{
+
+		system ('mysql -u'.Config::get('db_username').' -p'.Config::get('db_password'). ' -h'.Config::get('db_host'). ' -D'.Config::get('db_database')." -e \"update ss_node set traffic_rate =traffic_rate/2 where name like '%*%';\"");
 		Telegram::Send('*标节点倍率已减半，熬夜容易猝死，Robot建议通宵');
 	}
     public static function syncnode()
@@ -157,7 +161,8 @@ class Job
         DetectLog::where('datetime', '<', time() - 86400 * 1)->delete();
         #Speedtest::where('datetime', '<', time() - 86400 * 1)->delete();
         EmailVerify::where('expire_in', '<', time() - 86400 * 1)->delete();
-        system('rm -rf' . BASE_PATH . '/storage/*.png', $ret);
+        #system('rm -rf' . BASE_PATH . '/storage/*.png', $ret);
+        system('rm -rf /web/SSPanel/storage/*.png', $ret);
         Telegram::Send('已清理数据库过期日志，感觉身体被掏空~');
 
         //auto reset
@@ -182,24 +187,25 @@ class Job
                 $boughted_users[] = $bought->userid;
                 if ((time() - $shop->reset_exp() * 86400 < $bought->datetime) && (int)((time() - $bought->datetime) / 86400) % $shop->reset() == 0 && (int)((time() - $bought->datetime) / 86400) != 0) {
                     echo('流量重置-' . $user->id . "\n");
-                    $user->transfer_enable = Tools::toGB($shop->reset_value());
+		    $user->transfer_enable = Tools::toGB($shop->reset_value());
+		    $user->class = $shop->user_class();
                     $user->u = 0;
                     $user->d = 0;
                     $user->last_day_t = 0;
                     $user->save();
 
-                    #$subject = Config::get('appName') . '-您的流量被重置了';
-                    #$to = $user->email;
-                    #$text = '您好，根据您所订购的订单 ID:' . $bought->id . '，流量已经被重置为' . $shop->reset_value() . 'GB';
-                    #try {
-                    #    Mail::send($to, $subject, 'news/warn.tpl', [
-                    #        'user' => $user,
-                    #        'text' => $text
-                    #    ], [
-                    #    ]);
-                    #} catch (Exception $e) {
-                    #    echo $e->getMessage();
-                    #}
+                    /*$subject = Config::get('appName') . '-您的流量被重置了';
+                    $to = $user->email;
+                    $text = '您好，根据您所订购的订单 ID:' . $bought->id . '，流量已经被重置为' . $shop->reset_value() . 'GB';
+                    try {
+                        Mail::send($to, $subject, 'news/warn.tpl', [
+                            'user' => $user,
+                            'text' => $text
+                        ], [
+                        ]);
+                    } catch (Exception $e) {
+                        echo $e->getMessage();
+		    }*/
                 }
             }
         }
@@ -446,7 +452,7 @@ class Job
                     }
 
                     foreach ($adminUser as $user) {
-                        echo 'Send offline mail to user: ' . $user->id;
+                        /*echo 'Send offline mail to user: ' . $user->id;
                         $subject = Config::get('appName') . '-系统警告';
                         $to = $user->email;
                         $text = '管理员您好，系统发现节点 ' . $node->name . ' 掉线了，请您及时处理。';
@@ -458,7 +464,7 @@ class Job
                             ]);
                         } catch (Exception $e) {
                             echo $e->getMessage();
-                        }
+                        }*/
 
                         if (Config::get('enable_cloudxns') == 'true' && ($node->sort == 0 || $node->sort == 10 || $node->sort == 12 || $node->sort == 13)) {
                             $api = new Api();
@@ -509,9 +515,8 @@ class Job
                             $notice_text =  $node->name . ' 节点故障离线';
                         }
                     }
-
                     Telegram::Send($notice_text);
-
+					
                     $myfile = fopen(
                         BASE_PATH . '/storage/' . $node->id . '.offline',
                         'wb+'
@@ -542,7 +547,7 @@ class Job
                         file_get_contents('https://sc.ftqq.com/' . $ScFtqq_SCKEY . '.send', false, $context);
                     }
                     foreach ($adminUser as $user) {
-                        echo 'Send offline mail to user: ' . $user->id;
+                        /*echo 'Send offline mail to user: ' . $user->id;
                         $subject = Config::get('appName') . '-系统提示';
                         $to = $user->email;
                         $text = '管理员您好，系统发现节点 ' . $node->name . ' 恢复上线了。';
@@ -554,7 +559,7 @@ class Job
                             ]);
                         } catch (Exception $e) {
                             echo $e->getMessage();
-                        }
+                        }*/
 
                         if (Config::get('enable_cloudxns') == 'true' && ($node->sort == 0 || $node->sort == 10 || $node->sort == 12 || $node->sort == 13)) {
                             $api = new Api();
@@ -595,7 +600,6 @@ class Job
                             $notice_text =  $node->name . ' 节点已恢复';
                         }
                     }
-
                     Telegram::Send($notice_text);
 
                     unlink(BASE_PATH . '/storage/' . $node->id . '.offline');
@@ -671,7 +675,7 @@ class Job
                 $user->d = 0;
                 $user->last_day_t = 0;
 
-                $subject = Config::get('appName') . '-您的用户账户已经过期了';
+                /*$subject = Config::get('appName') . '-您的用户账户已经过期了';
                 $to = $user->email;
                 $text = '您好，系统发现您的账号已经过期了。';
                 try {
@@ -680,9 +684,10 @@ class Job
                         'text' => $text
                     ], [
                     ]);
-                } catch (Exception $e) {
+		} */
+		/*catch (Exception $e) {
                     echo $e->getMessage();
-                }
+		}*/
                 $myfile = fopen(
                     BASE_PATH . '/storage/' . $user->id . '.expire_in',
                     'wb+'
@@ -694,7 +699,6 @@ class Job
                 unlink(BASE_PATH . '/storage/' . $user->id . '.expire_in');
             }
 
-
             //余量不足检测
             if (!file_exists(BASE_PATH . '/storage/traffic_notified/') && !mkdir($concurrentDirectory = BASE_PATH . '/storage/traffic_notified/') && !is_dir($concurrentDirectory)) {
                 throw new RuntimeException(sprintf('Directory "%s" was not created', $concurrentDirectory));
@@ -704,9 +708,8 @@ class Job
                 $user_traffic_left = $user->transfer_enable - $user->u - $user->d;
                 $under_limit = 'false';
 
-                if ($user->transfer_enable != 0) {
-                    if (Config::get('notify_limit_mode') == 'per' &&
-                        $user_traffic_left / $user->transfer_enable * 100 < Config::get('notify_limit_value')) {
+                if ($user->transfer_enable != 0 && $user->class != 0) {
+                    if (Config::get('notify_limit_mode') == 'per' && $user_traffic_left / $user->transfer_enable * 100 < Config::get('notify_limit_value')) {
                         $under_limit = 'true';
                         $unit_text = '%';
                     }
@@ -716,7 +719,7 @@ class Job
                     $unit_text = 'MB';
                 }
 
-                if ($under_limit == 'true' && !file_exists(BASE_PATH . '/storage/traffic_notified/' . $user->id . '.userid')) {
+                if ($under_limit == 'true' && !file_exists(BASE_PATH . '/storage/traffic_notified/' . $user->id . '.userid') && $user->class != 0) {
                     $subject = Config::get('appName') . ' - 您的剩余流量过低';
                     $to = $user->email;
                     $text = '您好，系统发现您剩余流量已经低于 ' . Config::get('notify_limit_value') . $unit_text . ' 。';
@@ -760,19 +763,15 @@ class Job
                 $user->kill_user();
                 continue;
             }
-
-
-            if (Config::get('auto_clean_uncheck_days') > 0 &&
-                max(
-                    $user->last_check_in_time,
-                    strtotime($user->reg_date)
-                ) + (Config::get('auto_clean_uncheck_days') * 86400) < time() &&
+			
+            if (Config::get('auto_clean_unused_days') > 0 &&
+                max($user->t, strtotime($user->reg_date)) + (Config::get('auto_clean_unused_days') * 86400) < time() &&
                 $user->class == 0 &&
                 $user->money <= Config::get('auto_clean_min_money')
             ) {
                 $subject = Config::get('appName') . '-您的用户账户已经被删除了';
                 $to = $user->email;
-                $text = '您好，系统发现您的账号已经 ' . Config::get('auto_clean_uncheck_days') . ' 天没签到了，帐号已经被删除。';
+                $text = '您好，系统发现您的账号已经 ' . Config::get('auto_clean_unused_days') . ' 天没使用且无余额无剩余流量，帐号已经被删除。';
                 try {
                     Mail::send($to, $subject, 'news/warn.tpl', [
                         'user' => $user,
@@ -785,42 +784,21 @@ class Job
                 $user->kill_user();
                 continue;
             }
-
-            if (Config::get('auto_clean_unused_days') > 0 &&
-                max($user->t, strtotime($user->reg_date)) + (Config::get('auto_clean_unused_days') * 86400) < time() &&
-                //$user->class == 0 &&
-                $user_traffic_left <=0 &&  $user->money <= Config::get('auto_clean_min_money') //剩余流量小于等于0余额小于等于0
-            ) {
-                $subject = Config::get('appName') . '-您的用户账户已经被删除了';
-                $to = $user->email;
-                $text = '您好，系统发现您的账号已经 ' . Config::get('auto_clean_unused_days') . ' 天不再使用且无可用流量和余额，帐号已经被删除。';
-                try {
-                    Mail::send($to, $subject, 'news/warn.tpl', [
-                        'user' => $user,
-                        'text' => $text
-                    ], [
-                    ]);
-                } catch (Exception $e) {
-                    echo $e->getMessage();
-                }
-                $user->kill_user();
-                continue;
-            }
-
+			
             if ($user->class != 0 &&
                 strtotime($user->class_expire) < time() &&
                 strtotime($user->class_expire) > 1420041600
             ) {
-                $text = '您好，系统发现您的账号等级已经过期了。';
+		//$text = '您好，系统发现您的账号等级已经过期了。';
                 $reset_traffic = Config::get('class_expire_reset_traffic');
                 if ($reset_traffic >= 0) {
                     $user->transfer_enable = Tools::toGB($reset_traffic);
                     $user->u = 0;
                     $user->d = 0;
                     $user->last_day_t = 0;
-                    $text .= '流量已经被重置为' . $reset_traffic . 'GB';
+                    //$text .= '流量已经被重置为' . $reset_traffic . 'GB';
                 }
-                $subject = Config::get('appName') . '-您的账户等级已经过期了';
+                /*$subject = Config::get('appName') . '-您的账户等级已经过期了';
                 $to = $user->email;
                 try {
                     Mail::send($to, $subject, 'news/warn.tpl', [
@@ -828,12 +806,17 @@ class Job
                         'text' => $text
                     ], [
                     ]);
-                } catch (Exception $e) {
+		} 
+		catch (Exception $e) {
                     echo $e->getMessage();
-                }
+		}*/
 
                 $user->class = 0;
             }
+	    $user_traffic_left = $user->transfer_enable - $user->u - $user->d;
+	    if ( $user_traffic_left < 0) { //如果当前可用流量小于0，则将用户等级置零
+               	 $user->class = 0;
+	    }
 
             $user->save();
         }

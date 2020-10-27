@@ -12,7 +12,7 @@
 		<div class="container">
 			<section class="content-inner margin-top-no">
 				<div class="ui-card-wrap">
-						    <div class="col-xx-12 col-xs-6 col-lg-4">
+						    <div class="col-xx-12 col-xs-4 col-lg-4">
 								<div class="card user-info">
 									<div class="user-info-main">
 										<div class="nodemain">
@@ -39,7 +39,7 @@
 									</div>
 								</div>
 				            </div>
-							<div class="col-xx-12 col-xs-6 col-lg-4">
+							<div class="col-xx-12 col-xs-4 col-lg-4">
 								<div class="card user-info">
 									<div class="user-info-main">
 										<div class="nodemain">
@@ -61,12 +61,12 @@
 									</div>
 									<div class="user-info-bottom">
 										<div class="nodeinfo node-flex">
-											<span href="/user/shop"><i class="icon icon-md">attach_money</i>0余额的账户过期将被清理</span>
+											<span href="/user/shop"><i class="icon icon-md">attach_money</i>无余额的账户过期将被清理</span>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="col-xx-12 col-xs-6 col-lg-4">
+							<div class="col-xx-12 col-xs-4 col-lg-4">
 								<div class="card user-info">
 									<div class="user-info-main">
 										<div class="nodemain">
@@ -132,7 +132,15 @@
 										         <br>
 										     </div>
                                         <br/>
-									    <div class="card-heading">ClashR、Surge等可通过<a href="javascript:void(0);" onclick=javascript:window.open('https://subweb.'+window.location.hostname,"_blank")>扩展订阅</a>自行转换</div>
+                                        <br/>Clash
+										     <div class="float-clear">
+										         <input type="text" class="input form-control form-control-monospace cust-link col-xx-12 col-sm-8 col-lg-8" name="input1" readonly value="https://rss.outsoul.xyz/sub?target=clash&url=http%3A%2F%2Frss.outsoul.xyz%2Flink%2F{$ssr_sub_token}%3Fmu%3D2" readonly="true">
+										         <button class="copy-text btn btn-subscription col-xx-12 col-sm-3 col-lg-3" type="button" data-clipboard-text="https://rss.outsoul.xyz/sub?target=clash&url=http%3A%2F%2Frss.outsoul.xyz%2Flink%2F{$ssr_sub_token}%3Fmu%3D2">点击复制</button>
+										         <br>
+										     </div>
+                                        <br/>
+									    <div class="card-heading">可通过<a href="javascript:void(0);" onclick=javascript:window.open('https://subweb.'+window.location.hostname,"_blank")>扩展订阅</a>进行更多转换</div>
+									    <!--<div class="card-heading">可通过<a href="https://acl4ssr-sub.github.io/" target="_blank" >扩展订阅</a>进行更多转换</div>-->
                                         <div class="card-heading">若泄漏地址请重置并<a href="/user/edit">修改节点连接密码</a><div>
                                     </div>
                                 </div>
@@ -310,7 +318,7 @@ $(function(){
 
 $(".copy-text").click(function () {
 	$("#result").modal();
-	$("#msg").html("已拷貝訂閲地址");
+	$("#msg").html("已复制订阅地址");
 });
 $(function(){
 	new Clipboard('.reset-link');
@@ -318,7 +326,7 @@ $(function(){
 
 $(".reset-link").click(function () {
 	$("#result").modal();
-	$("#msg").html("已重置訂閲鏈接");
+	$("#msg").html("已重置订阅链接");
 	window.setTimeout("location.href='/user/url_reset'", {$config['jump_delay']});
 });
 

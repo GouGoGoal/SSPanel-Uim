@@ -112,6 +112,7 @@
 							</li>
 							<li>
 							       <a href="javascript:void(0);" onclick=javascript:window.open('https://subweb.'+window.location.hostname,"_blank")>
+							       <!--<a href="https://acl4ssr-sub.github.io/"  target="_blank">-->
 								    <i class="icon icon-lg">link</span>&nbsp</i>&nbsp;扩展订阅
 								</a>
 							</li>
@@ -211,7 +212,7 @@ $(function(){
 
 $(".copy-gmail").click(function () {
 	$("#result").modal();
-	$("#msg").html("已複製到剪貼板：admin@soulout.club");
+	$("#msg").html("已复制邮箱：admin@soulout.club");
 });
 </script>
 <!--<script>

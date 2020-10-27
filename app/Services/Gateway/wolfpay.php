@@ -162,7 +162,7 @@ class wolfpay extends AbstractPayment {
     }
     public function getPurchaseHTML() {
         return '<div class="card-inner">
-										<p class="card-heading">主要充值渠道(支付宝、PayPal、信用卡，最小金额：3元)</p>
+										<p class="card-heading">主要充值渠道(支付宝、微信、信用卡，最小金额：3元)</p>
 										<div class="form-group form-group-label">
 											<label class="floating-label" for="amount">金额</label>
 											<input class="form-control" id="amount" type="text">
